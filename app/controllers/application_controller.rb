@@ -5,9 +5,24 @@ class ApplicationController < ActionController::Base
 
   def root
   	bird_connection = Adapters::EbirdConnection.new
-  	@owls = bird_connection.query("Strix Varia")
-  	@lat = @owls.first.lat
-  	@lng = @owls.first.lng
+    reports = bird_connection.query("Strix Varia")
+    @collection = ReportCollection.new
+    reports.each do |r|
+      @collection.reports.build({
+        obs_dt: r[:obsDt],
+        lng: r[:lng],
+        lat: r[:lat],
+        how_many: r[:howMany],
+        com_name: r[:comName],
+        sci_name: r[:sciName]
+      });
+    end
+    @collection.save if reports.length>0
+
+    @centroid = @collection.centroid
+  	# @owls = bird_connection.query("Strix Varia")
+  	# @lat = @owls.first.lat
+  	# @lng = @owls.first.lng
   end
 
 end

@@ -13,33 +13,21 @@
 </head>
 <body>
 
-<ul>
-	<% @owls.each do |owl| %>
-		<li>
-			<%= owl.lat %> , <%= owl.lng %>
-
-		</li>
-	<% end %>
-</ul>
-
 <div id="map"></div>
     <script type="text/javascript">
     	function initMap() {
-    		// var locations = [];
-    		var myLatlng = new google.maps.LatLng(<%= @lat %>,<%= @lng %>);
+    		var myLatlng = new google.maps.LatLng(<%= @centroid[0].to_s %> , <%= @centroid[1].to_s %>);
     		var mapOptions = {
-			  zoom: 10,
-			  center: myLatlng
-			}
+			       zoom: 10,
+			      center: myLatlng
+			  }
 			var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    		<% @owls.each do |owl| %>
-			// var myLatlng = new google.maps.LatLng(<%= @lat %>,<%= @lng %>);
-				var myLatlng = new google.maps.LatLng(<%= owl.lat %>,<%= owl.lng %>);
-				// locations.push(myLatlng);
+    		<% @collection.reports.each do |report| %>
+				var myLatlng = new google.maps.LatLng(<%= report.lat %>,<%= report.lng %>);
 
 				var marker = new google.maps.Marker({
-				    position: myLatlng,
-				    title:"Hello World!"
+				    position: myLatlng
+				    // title: "Observed on date"+<%= report.obs_dt.to_s || " " %>
 				});
 
 				marker.setMap(map);
