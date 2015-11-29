@@ -12,16 +12,21 @@ nav.navbar {
   z-index: 1;
 }
 
+li.active a {
+  color: white;
+  font-weight: 700
+}
+
 div.row {
   margin-top: 70px
 }
 
 #map {
-  height:200px;
+  height:400px;
   width: inherit;
 }
 
 #map-outer {
-  width: inherit !important;
+  width: inherit;
   position: fixed;
 }

@@ -6,6 +6,9 @@ $(function(){
 })
 
 $(document).on('click','li.select_species', function(){
+  $(this).siblings().removeClass('active');
+  $(this).addClass('active');
+  // debugger;
   var longitude = -73.96;
   var latitude = 40.65;
   var species = $(this).data().species;

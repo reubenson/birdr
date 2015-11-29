@@ -3,10 +3,12 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4">
-      Bird List
-      <ul>
+      <%= @collection.reports.length %> different species of birds have been
+      spotted near your location in the past 30 days. Click through the list
+      of birds below to load recent observations logged in the eBird database!
+      <ul class="list-group">
       <% @collection.reports.each do |report| %>
-        <li class="select_species" data-species="<%= report.sci_name %>"><a href="#"> <%= report.com_name %></a> </li>
+        <li class="select_species list-group-item" data-species="<%= report.sci_name %>"><a> <%= report.com_name %></a> </li>
       <% end %>
       </ul>
     </div>
