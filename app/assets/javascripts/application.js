@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require yeti/loader
+//= require yeti/bootswatch
+//= require report_collection

@@ -11,4 +11,12 @@ class ReportCollection < ActiveRecord::Base
 
     [ lats.inject{|sum,lat| sum+lat}/lats.length , lngs.inject{|sum,lng| sum+lng}/lngs.length ]
   end
+
+  def species_list
+    self.reports.pluck(:com_name)
+  end
+
+  def search_species
+    self.reports.where('com_name LIKE (?)',"%#{self.query}")
+  end
 end

@@ -1,0 +1,27 @@
+// Place all the styles related to the report_collection controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body {
+  height: 90%; margin: 0; padding: 0;
+}
+
+nav.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+div.row {
+  margin-top: 70px
+}
+
+#map {
+  height:200px;
+  width: inherit;
+}
+
+#map-outer {
+  width: inherit !important;
+  position: fixed;
+}

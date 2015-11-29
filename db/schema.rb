@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20151125025328) do
 
   create_table "report_collections", force: :cascade do |t|
+    t.string   "query"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

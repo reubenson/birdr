@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def root
+    # deprecate this action?
   	bird_connection = Adapters::EbirdConnection.new
     reports = bird_connection.query("Strix Varia")
     @collection = ReportCollection.new
@@ -17,12 +18,10 @@ class ApplicationController < ActionController::Base
         sci_name: r[:sciName]
       });
     end
+
     @collection.save if reports.length>0
 
     @centroid = @collection.centroid
-  	# @owls = bird_connection.query("Strix Varia")
-  	# @lat = @owls.first.lat
-  	# @lng = @owls.first.lng
   end
 
 end
