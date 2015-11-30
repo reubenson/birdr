@@ -2,16 +2,14 @@ markers = [];
 
 $(document).on('keyup','#search', function(){
   var search = $(this).val();
-  if (search.length>=0) {
-    var species_list = $('li.list-group-item');
-    for (var i = 0; i < species_list.length; i++) {
-      var name = $(species_list[i]).text();
-      var str = new RegExp(search,'i');
-      if ( str.test(name) ) {
-        $(species_list[i]).show();
-      } else {
-        $(species_list[i]).hide();
-      }
+  var species_list = $('li.list-group-item');
+  for (var i = 0; i < species_list.length; i++) {
+    var name = $(species_list[i]).text();
+    var str = new RegExp(search,'i');
+    if ( str.test(name) ) {
+      $(species_list[i]).show();
+    } else {
+      $(species_list[i]).hide();
     }
   }
 });
@@ -23,8 +21,6 @@ $(document).on('click','li.select_species', function(){
   debugger;
   var latitude = $('#species-list').data().lat;
   var longitude = $('#species-list').data().lng;
-  // var longitude = -73.96;
-  // var latitude = 40.65;
   var species = $(this).data().species;
   $.ajax({
     url: "http://ebird.org/ws1.1/data/obs/geo_spp/recent?lng="+longitude+

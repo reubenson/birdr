@@ -1,4 +1,4 @@
-<%= render partial: 'application/navbar', locals: {reports: @collection.reports} %>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-4">
@@ -27,14 +27,12 @@
 
 <script type="text/javascript">
 function initMap() {
-  var myLatlng = new google.maps.LatLng(<%= @lat %> , <%= @lng %>);
+  var myLatlng = new google.maps.LatLng(<%= @collection.latitude %> , <%= @collection.longitude %>);
 
   var mapOptions = {
        zoom: 10,
       center: myLatlng
   };
-
-  // markers = [];
 
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
   <% @collection.search_species.each do |report| %>
