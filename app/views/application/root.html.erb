@@ -1,18 +1,16 @@
 <%= render partial: 'application/navbar', locals: {reports: @collection.reports} %>
-
 <div class="container">
   <div class="row">
     <div class="col-xs-4">
       <%= @collection.reports.length %> different bird species have been
-      spotted near your location in the past 30 days. Click through the list
+      spotted near <%= @collection.location %> in the past 30 days. Click through the list
       of birds below or use the search filter to display recent observations logged in the eBird database!
       <br><br>
       <%= form_tag('', remote: true, id: 'filter-species', class: 'form-group' ) do %>
-       <%= text_field_tag 'search', '', placeholder: 'filter results, e.g. "owl"', class: 'form-control' %>
+        <%= text_field_tag 'search', '', placeholder: 'filter results (e.g. "owl")', class: 'form-control' %>
       <% end %>
-      <!-- </form> -->
 
-      <ul class="list-group">
+      <ul class="list-group" id="species-list" data-lat="<%= @collection.latitude %>" data-lng="<%= @collection.longitude %>">
       <% @collection.reports.sort{|x,y| x.com_name <=> y.com_name}.each do |report| %>
         <li class="select_species list-group-item" data-species="<%= report.sci_name %>"><a> <%= report.com_name %></a> </li>
       <% end %>
@@ -36,7 +34,7 @@ function initMap() {
       center: myLatlng
   };
 
-  markers = [];
+  // markers = [];
 
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
   <% @collection.search_species.each do |report| %>
@@ -50,7 +48,4 @@ function initMap() {
     markers.push(marker);
   <% end %>
 }
-</script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["gmaps_api_key"] %>&v=3&sensor=false&callback=initMap">
 </script>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   # get '/' => 'application#root', as: 'root'
   get '/' => 'report_collection#create'
+  post '/' => 'report_collection#create'
   # get '/' => 'report_collection#new'
   # post 'create' => 'report_collection#create'
   # The priority is based upon order of creation: first created -> highest priority.

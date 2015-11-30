@@ -1,4 +1,4 @@
-// var markers = [];
+markers = [];
 
 $(document).on('keyup','#search', function(){
   var search = $(this).val();
@@ -20,8 +20,11 @@ $(document).on('click','li.select_species', function(){
   $(this).siblings().removeClass('active');
   $(this).addClass('active');
   // debugger;
-  var longitude = -73.96;
-  var latitude = 40.65;
+  debugger;
+  var latitude = $('#species-list').data().lat;
+  var longitude = $('#species-list').data().lng;
+  // var longitude = -73.96;
+  // var latitude = 40.65;
   var species = $(this).data().species;
   $.ajax({
     url: "http://ebird.org/ws1.1/data/obs/geo_spp/recent?lng="+longitude+

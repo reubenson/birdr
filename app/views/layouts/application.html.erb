@@ -9,5 +9,8 @@
 <body>
 <%= yield %>
 
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["gmaps_api_key"] %>&v=3&sensor=false&callback=initMap">
+</script>
 </body>
 </html>
