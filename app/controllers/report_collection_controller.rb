@@ -4,7 +4,8 @@ class ReportCollectionController < ApplicationController
   end
 
   def create
-    @collection = ReportCollection.create(location: params[:location])
+    # binding.pry
+    @collection = ReportCollection.new(location: params[:location])
     bird_connection = Adapters::EbirdConnection.new
 
     reports = bird_connection.location_query(@collection.latitude,@collection.longitude)
@@ -20,7 +21,8 @@ class ReportCollectionController < ApplicationController
         });
       end
     end
-
+    @collection.save
+    binding.pry
     # @collection.save if reports.length>0
     # @centroid = @collection.centroid
     render 'application/root'
