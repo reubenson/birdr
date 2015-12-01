@@ -4,7 +4,6 @@ class ReportCollectionController < ApplicationController
   end
 
   def create
-    # binding.pry
     @collection = ReportCollection.create(location: params[:location])
     bird_connection = Adapters::EbirdConnection.new
 
