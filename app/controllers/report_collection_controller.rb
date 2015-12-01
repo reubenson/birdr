@@ -4,11 +4,7 @@ class ReportCollectionController < ApplicationController
   end
 
   def create
-    # binding.pry
     location = params[:location] || request.remote_ip || "Prospect Park, NY"
-    # if !params[:location]
-
-    # end
     @collection = ReportCollection.create(location: location)
     bird_connection = Adapters::EbirdConnection.new
 
