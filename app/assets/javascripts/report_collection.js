@@ -17,14 +17,13 @@ $(document).on('keyup','#search', function(){
 $(document).on('click','li.select_species', function(){
   $(this).siblings().removeClass('active');
   $(this).addClass('active');
-  // debugger;
-  debugger;
+
   var latitude = $('#species-list').data().lat;
   var longitude = $('#species-list').data().lng;
   var species = $(this).data().species;
   $.ajax({
     url: "http://ebird.org/ws1.1/data/obs/geo_spp/recent?lng="+longitude+
-      "&lat="+latitude+"&dist=30&back=30&sci="+species+"&fmt=json",
+      "&lat="+latitude+"&dist=30&back=30&sci="+species+"&fmt=json"
   }).success(function(data){
     deleteMarkers();
     // var myLatlng = new google.maps.LatLng(latitude,longitude);
