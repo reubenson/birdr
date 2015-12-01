@@ -23,4 +23,10 @@ div.row {
 
 #map {
   height:400px;
+  width: 75%;
+}
+
+#map-outer {
+  position: fixed;
+  width: inherit;
 }
