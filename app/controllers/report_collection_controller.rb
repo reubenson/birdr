@@ -7,7 +7,6 @@ class ReportCollectionController < ApplicationController
     location = params[:location] || request.remote_ip || "Prospect Park, NY"
     @collection = ReportCollection.create(location: location)
     bird_connection = Adapters::EbirdConnection.new
-
     reports = bird_connection.location_query(@collection.latitude,@collection.longitude)
     reports.each do |r|
       if valid_species(r.comName)
@@ -21,8 +20,7 @@ class ReportCollectionController < ApplicationController
         });
       end
     end
-    @collection.save
-    # @collection.save if reports.length>0
+    # @collection.save
     # @centroid = @collection.centroid
     render 'application/root'
   end
