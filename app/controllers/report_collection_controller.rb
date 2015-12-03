@@ -1,7 +1,4 @@
 class ReportCollectionController < ApplicationController
-  def new
-    @collection = ReportCollection.new
-  end
 
   def create
     location = params[:location] || request.remote_ip || "Prospect Park, NY"

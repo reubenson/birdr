@@ -26,15 +26,12 @@ $(document).on('click','li.select_species', function(){
       "&lat="+latitude+"&dist=30&back=30&sci="+species+"&fmt=json"
   }).success(function(data){
     deleteMarkers();
-    // var myLatlng = new google.maps.LatLng(latitude,longitude);
-    // var mapOptions = {
-        //  zoom: 10,
-        // center: myLatlng
-    // };
     var i = 0;
+    var animation_length = 1500.0; // 1500 ms
+    var drop_length = Math.min(100,animation_length/data.length);
     data.forEach(function(report){
       var myLatlng = new google.maps.LatLng(report.lat,report.lng);
-      addMarkerWithTimeout(myLatlng, i * 100);
+      addMarkerWithTimeout(myLatlng, i * drop_length+(Math.random()*20-10));
       i+=1;
     })
   })
