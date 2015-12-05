@@ -12,7 +12,7 @@
 
       <ul class="list-group" id="species-list" data-lat="<%= @collection.latitude %>" data-lng="<%= @collection.longitude %>">
       <% @collection.reports.sort{|x,y| x.com_name <=> y.com_name}.each do |report| %>
-        <li class="select_species list-group-item" data-species="<%= report.sci_name %>"><a> <%= report.com_name %></a> </li>
+        <li class="select_species list-group-item" data-species="<%= report.sci_name %>"><a><%= report.com_name %></a></li>
       <% end %>
       </ul>
     </div>
@@ -21,6 +21,7 @@
       <div id="map-outer">
         <div id="map"></div>
       </div>
+      <div id="wikipedia">
     </div>
   </div>
 </div>

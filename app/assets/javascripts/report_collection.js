@@ -35,6 +35,9 @@ $(document).on('click','li.select_species', function(){
       i+=1;
     })
   })
+
+  var common_name = $(this).text().toLowerCase();
+  makeWikipediaAPIRequest(common_name);
 })
 
 function addMarkerWithTimeout(position, timeout) {
@@ -60,4 +63,22 @@ function clearMarkers() {
 function deleteMarkers() {
   clearMarkers();
   markers = [];
+}
+
+function makeWikipediaAPIRequest(species){
+  var url = "https://en.wikipedia.org/w/api.php?action=query&titles="+species+"&prop=extracts&exsentences=8&explaintext=&format=json";
+  $.ajax(url, {
+    dataType: "JSONP"
+    // headers: {
+    //  origin: 'http://brdr.heroku.com',
+    //  content_type: "application/json; charset=UTF-8"
+    // }
+  }).success(function(data){
+    var page_id = Object.keys(data.query.pages)[0];
+    var wikipedia_text = data.query.pages[page_id].extract;
+    var wikipedia_url = "https://en.wikipedia.org/?curid="+page_id;
+
+    $('#wikipedia').append(wikipedia_text);
+    $('#wikipedia').append("<a href='"+wikipedia_url+"'>(Sourced from Wikipedia)</a>");
+  });
 }
