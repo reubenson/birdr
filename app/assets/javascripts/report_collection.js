@@ -66,7 +66,7 @@ function deleteMarkers() {
 }
 
 function makeWikipediaAPIRequest(species){
-  var url = "https://en.wikipedia.org/w/api.php?action=query&titles="+species+"&prop=extracts&exsentences=8&explaintext=&format=json";
+  var url = "https://en.wikipedia.org/w/api.php?action=query&titles="+species+"&prop=extracts&exchars=500&explaintext=&format=json";
   $.ajax(url, {
     dataType: "JSONP"
     // headers: {
@@ -76,9 +76,10 @@ function makeWikipediaAPIRequest(species){
   }).success(function(data){
     var page_id = Object.keys(data.query.pages)[0];
     var wikipedia_text = data.query.pages[page_id].extract;
+    wikipedia_text = wikipedia_text.replace("== Description ==","")
     var wikipedia_url = "https://en.wikipedia.org/?curid="+page_id;
 
     $('#wikipedia').append(wikipedia_text);
-    $('#wikipedia').append("<a href='"+wikipedia_url+"'>(Sourced from Wikipedia)</a>");
+    $('#wikipedia').append("<a href='"+wikipedia_url+"'> (Read more on Wikipedia)</a>");
   });
 }

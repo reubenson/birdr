@@ -21,19 +21,38 @@ div.row {
   margin-top: 70px
 }
 
-#map {
-  height:600px;
-  width: 75%;
+// #map {
+//   height:600px;
+//   width: 75%;
+// }
+//
+// #map-outer {
+//   position: fixed;
+//   width: inherit;
+// }
+
+// #wikipedia {
+//   top:700px;
+//   width: 55%;
+//   height: 200;
+//   position: fixed;
+// }
+
+.col-xs-8 {
+  height: 600px;
 }
 
-#map-outer {
+#view, #map-outer, #map {
+  height: 100%;
+  // width: 90%;
+}
+
+#wikipedia, #map-outer {
+  width: 75%
+}
+
+#view {
   position: fixed;
+  height: inherit;
   width: inherit;
-}
-
-#wikipedia {
-  // top:600px;
-  width: 75%;
-  height: 200;
-  position: fixed;
 }
