@@ -16,10 +16,6 @@ $(document).on('keyup','#search', function(){
 });
 
 $(document).on('click','li.select_species', function(){
-  if (last_clicked_species) {
-    $(last_clicked_species).find('.wikipedia-info').hide();
-  }
-  last_clicked_species = $(this);
   $(this).siblings().removeClass('active');
   $(this).addClass('active');
 
@@ -41,9 +37,14 @@ $(document).on('click','li.select_species', function(){
     })
   })
 
-  var current_species_el = this;
   var common_name = $(this).text().trim().toLowerCase();
-  makeWikipediaAPIRequestAndAppendInfo(common_name,current_species_el);
+  makeWikipediaAPIRequestAndAppendInfo(common_name,this);
+  $(this).find('.wikipedia-info').slideDown(1000);
+
+  if (last_clicked_species) {
+    $(last_clicked_species).find('.wikipedia-info').slideUp(500);
+  }
+  last_clicked_species = $(this);
 })
 
 function addMarkerWithTimeout(position, timeout) {
@@ -88,7 +89,7 @@ function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
 
     // wiki_text = "<div id='wikipedia_text'>"+wikipedia_text+"</div>" +
     wiki_text = wikipedia_text+
-                "<a href='"+wikipedia_url+"'> (Read more on Wikipedia)</a>";
+                "<a href='"+wikipedia_url+"' target='_blank'> (Read more on Wikipedia)</a>";
 
     var wiki_el = $(current_el).find('.wikipedia-info').find('.wikipedia-text');
     $(wiki_el).html(wiki_text);
@@ -105,7 +106,7 @@ function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
   }).success(function(data){
     var img_url = data.query.pages["-1"].imageinfo[0].thumburl;
     var description_url = data.query.pages["-1"].imageinfo[0].descriptionurl;
-    img_html = "<a href='"+description_url+"'><img src='"+img_url+"'>"+"</a>"
+    img_html = "<a href='"+description_url+"' target='_blank'><img src='"+img_url+"'>"+"</a>"
 
     var wiki_el = $(current_el).find('.wikipedia-info').find('.wikipedia-img');
     $(wiki_el).html(img_html);
