@@ -36,8 +36,8 @@ $(document).on('click','li.select_species', function(){
     })
   })
 
-  var common_name = $(this).text().toLowerCase();
-  makeWikipediaAPIRequest(common_name);
+  var common_name = $(this).text().toLowerCase().replace('-','_');
+  makeWikipediaAPIRequestAndAppendInfo(common_name);
 })
 
 function addMarkerWithTimeout(position, timeout) {
@@ -65,21 +65,47 @@ function deleteMarkers() {
   markers = [];
 }
 
-function makeWikipediaAPIRequest(species){
+function makeWikipediaAPIRequestAndAppendInfo(species){
+  // https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query
+  var user_agent = "brdr/1.0 (http://brdr.herokuapp.com/; reubenson@gmail.com)"
   var url = "https://en.wikipedia.org/w/api.php?action=query&titles="+species+"&prop=extracts&exchars=500&explaintext=&format=json";
-  $.ajax(url, {
-    dataType: "JSONP"
-    // headers: {
-    //  origin: 'http://brdr.heroku.com',
-    //  content_type: "application/json; charset=UTF-8"
-    // }
+  $.ajax({
+    url: url,
+    dataType: "JSONP",
+    headers: { 'Api-User-Agent': user_agent }
   }).success(function(data){
     var page_id = Object.keys(data.query.pages)[0];
     var wikipedia_text = data.query.pages[page_id].extract;
     wikipedia_text = wikipedia_text.replace("== Description ==","")
     var wikipedia_url = "https://en.wikipedia.org/?curid="+page_id;
 
-    $('#wikipedia').append(wikipedia_text);
-    $('#wikipedia').append("<a href='"+wikipedia_url+"'> (Read more on Wikipedia)</a>");
+    appendWikipediaText( {text: wikipedia_text, url: wikipedia_url} )
   });
+
+  var img_api_url = "https://en.wikipedia.org/w/api.php?action=query&titles="
+  +species+"&generator=images&gimlimit=1&prop=imageinfo&iiprop=url&iiurlheight=200&format=json"
+  $.ajax({
+    url: img_api_url,
+    dataType: "JSONP",
+    headers: { 'Api-User-Agent': user_agent }
+  }).success(function(data){
+    var img_url = data.query.pages["-1"].imageinfo[0].thumburl;
+    var description_url = data.query.pages["-1"].imageinfo[0].descriptionurl;
+    img_html = "<a href='"+description_url+"'><img src='"+img_url+"'>"+"</a>"
+
+    appendWikipediaImg( img_html )
+  });
+
+
+}
+
+function appendWikipediaText(info) {
+  $('#wikipedia_text').text("")
+  $('#wikipedia_text').append(info.text);
+  $('#wikipedia_text').append("<a href='"+info.url+"'> (Read more on Wikipedia)</a>");
+}
+
+function appendWikipediaImg(html) {
+  $('#wikipedia_img').text("")
+  $('#wikipedia_img').append(html);
 }
