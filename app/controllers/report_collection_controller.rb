@@ -1,7 +1,7 @@
 class ReportCollectionController < ApplicationController
 
   def create
-    location = params[:location] || request.remote_ip || "Prospect Park, NY"
+    location = params[:location] || request.remote_ip!='::1' || "Prospect Park, NY"
     @collection = ReportCollection.create(location: location)
     bird_connection = Adapters::EbirdConnection.new
     reports = bird_connection.location_query(@collection.latitude,@collection.longitude)
@@ -19,6 +19,10 @@ class ReportCollectionController < ApplicationController
     end
     # @collection.save
     # @centroid = @collection.centroid
+    notice_msg = "#{@collection.reports.length} different bird species have been
+      spotted near #{@collection.location} in the past 30 days. Click through the list
+      of birds below or use the search filter to display recent observations logged in the eBird database!"
+    flash[:notice] = notice_msg
     render 'application/root'
   end
 end

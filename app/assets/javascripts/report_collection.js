@@ -1,4 +1,5 @@
 markers = [];
+last_clicked_species = null;
 
 $(document).on('keyup','#search', function(){
   var search = $(this).val();
@@ -15,6 +16,10 @@ $(document).on('keyup','#search', function(){
 });
 
 $(document).on('click','li.select_species', function(){
+  if (last_clicked_species) {
+    $(last_clicked_species).find('.wikipedia-info').hide();
+  }
+  last_clicked_species = $(this);
   $(this).siblings().removeClass('active');
   $(this).addClass('active');
 
@@ -36,8 +41,9 @@ $(document).on('click','li.select_species', function(){
     })
   })
 
-  var common_name = $(this).text().toLowerCase().replace('-','_');
-  makeWikipediaAPIRequestAndAppendInfo(common_name);
+  var current_species_el = this;
+  var common_name = $(this).text().trim().toLowerCase();
+  makeWikipediaAPIRequestAndAppendInfo(common_name,current_species_el);
 })
 
 function addMarkerWithTimeout(position, timeout) {
@@ -65,7 +71,7 @@ function deleteMarkers() {
   markers = [];
 }
 
-function makeWikipediaAPIRequestAndAppendInfo(species){
+function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
   // https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query
   var user_agent = "brdr/1.0 (http://brdr.herokuapp.com/; reubenson@gmail.com)"
   var url = "https://en.wikipedia.org/w/api.php?action=query&titles="+species+"&prop=extracts&exchars=500&explaintext=&format=json";
@@ -76,14 +82,22 @@ function makeWikipediaAPIRequestAndAppendInfo(species){
   }).success(function(data){
     var page_id = Object.keys(data.query.pages)[0];
     var wikipedia_text = data.query.pages[page_id].extract;
+    debugger;
     wikipedia_text = wikipedia_text.replace("== Description ==","")
     var wikipedia_url = "https://en.wikipedia.org/?curid="+page_id;
 
-    appendWikipediaText( {text: wikipedia_text, url: wikipedia_url} )
+    // wiki_text = "<div id='wikipedia_text'>"+wikipedia_text+"</div>" +
+    wiki_text = wikipedia_text+
+                "<a href='"+wikipedia_url+"'> (Read more on Wikipedia)</a>";
+
+    var wiki_el = $(current_el).find('.wikipedia-info').find('.wikipedia-text');
+    $(wiki_el).html(wiki_text);
+    // $(wiki_el).append("<div id='wikipedia_text'>"+wikipedia_text+"</div>");
+    // $('#wikipedia_text').append("<a href='"+wikipedia.url+"'> (Read more on Wikipedia)</a>");
   });
 
   var img_api_url = "https://en.wikipedia.org/w/api.php?action=query&titles="
-  +species+"&generator=images&gimlimit=1&prop=imageinfo&iiprop=url&iiurlheight=200&format=json"
+  +species+"&generator=images&gimlimit=1&prop=imageinfo&iiprop=url&iiurlwidth=600&format=json"
   $.ajax({
     url: img_api_url,
     dataType: "JSONP",
@@ -93,19 +107,19 @@ function makeWikipediaAPIRequestAndAppendInfo(species){
     var description_url = data.query.pages["-1"].imageinfo[0].descriptionurl;
     img_html = "<a href='"+description_url+"'><img src='"+img_url+"'>"+"</a>"
 
-    appendWikipediaImg( img_html )
+    var wiki_el = $(current_el).find('.wikipedia-info').find('.wikipedia-img');
+    $(wiki_el).html(img_html);
+    // $(current_el).text("")
+    // $(current_el).append(img_html);
   });
 
 
 }
 
 function appendWikipediaText(info) {
-  $('#wikipedia_text').text("")
-  $('#wikipedia_text').append(info.text);
-  $('#wikipedia_text').append("<a href='"+info.url+"'> (Read more on Wikipedia)</a>");
+
 }
 
 function appendWikipediaImg(html) {
-  $('#wikipedia_img').text("")
-  $('#wikipedia_img').append(html);
+
 }

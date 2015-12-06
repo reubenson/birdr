@@ -1,18 +1,22 @@
-
 <div class="container">
   <div class="row">
+    <p id="notice"><%= notice %></p>
     <div class="col-xs-4">
-      <%= @collection.reports.length %> different bird species have been
-      spotted near <%= @collection.location %> in the past 30 days. Click through the list
-      of birds below or use the search filter to display recent observations logged in the eBird database!
-      <br><br>
+      <div id="wikipedia_text"></div>
+      <div id="wikipedia_img"></div>
       <%= form_tag('', remote: true, id: 'filter-species', class: 'form-group' ) do %>
         <%= text_field_tag 'search', '', placeholder: 'filter results (e.g. "owl")', class: 'form-control' %>
       <% end %>
 
       <ul class="list-group" id="species-list" data-lat="<%= @collection.latitude %>" data-lng="<%= @collection.longitude %>">
       <% @collection.reports.sort{|x,y| x.com_name <=> y.com_name}.each do |report| %>
-        <li class="select_species list-group-item" data-species="<%= report.sci_name %>"><a><%= report.com_name %></a></li>
+        <li class="select_species list-group-item" data-species="<%= report.sci_name %>">
+          <a><%= report.com_name %></a>
+          <div class="wikipedia-info">
+            <div class="wikipedia-img"></div>
+            <div class="wikipedia-text"></div>
+          </div>
+        </li>
       <% end %>
       </ul>
     </div>
@@ -22,8 +26,6 @@
         <div id="map-outer">
           <div id="map"></div>
         </div>
-        <div id="wikipedia_text"></div>
-        <div id="wikipedia_img"></div>
       </div>
     </div>
   </div>

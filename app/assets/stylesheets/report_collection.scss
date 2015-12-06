@@ -39,7 +39,7 @@ div.row {
 // }
 
 .col-xs-8 {
-  height: 600px;
+  height: 500px;
 }
 
 #view, #map-outer, #map {
@@ -57,6 +57,6 @@ div.row {
   width: inherit;
 }
 
-#wikipdia_img a{
-  height: 200px;
+.wikipedia-img img{
+  width: 100%;
 }
