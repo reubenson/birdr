@@ -12,7 +12,7 @@
       <% @collection.reports.sort{|x,y| x.com_name <=> y.com_name}.each do |report| %>
       <a xname="#<%= report.com_name %>">
         <li class="select_species list-group-item" data-species="<%= report.sci_name %>">
-          <a href="#"><%= report.com_name %></a>
+          <a><%= report.com_name %></a>
           <div class="wikipedia-info">
             <div class="wikipedia-img"></div>
             <div class="wikipedia-text"></div>

@@ -45,6 +45,9 @@ $(document).on('click','li.select_species', function(){
     $(last_clicked_species).find('.wikipedia-info').slideUp(500);
   }
   last_clicked_species = $(this);
+
+  var scroll_position = $(this).prev().prev().offset().top;
+  $(document).scrollTop(scroll_position-10);
 })
 
 function addMarkerWithTimeout(position, timeout) {
@@ -83,7 +86,6 @@ function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
   }).success(function(data){
     var page_id = Object.keys(data.query.pages)[0];
     var wikipedia_text = data.query.pages[page_id].extract;
-    debugger;
     wikipedia_text = wikipedia_text.replace("== Description ==","")
     var wikipedia_url = "https://en.wikipedia.org/?curid="+page_id;
 
