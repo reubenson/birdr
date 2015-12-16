@@ -18,25 +18,8 @@ li.active a {
 }
 
 div.row {
-  margin-top: 70px
+  margin-top: 40px
 }
-
-// #map {
-//   height:600px;
-//   width: 75%;
-// }
-//
-// #map-outer {
-//   position: fixed;
-//   width: inherit;
-// }
-
-// #wikipedia {
-//   top:700px;
-//   width: 55%;
-//   height: 200;
-//   position: fixed;
-// }
 
 .col-xs-8 {
   height: 500px;
@@ -63,4 +46,11 @@ div.row {
 
 .wikipedia-info {
   display: none; //default
+}
+
+#notice {
+  width: 75%;
+  text-align: justify;
+  text-justify: inter-word;
+  margin-bottom: 20px;
 }

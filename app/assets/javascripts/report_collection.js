@@ -41,7 +41,7 @@ $(document).on('click','li.select_species', function(){
 
   var common_name = $(this).text().trim().toLowerCase();
   makeWikipediaAPIRequestAndAppendInfo(common_name,this);
-  $(this).find('.wikipedia-info').slideDown(500, function(){
+  $(this).find('.wikipedia-info').slideDown(1000, function(){
     self = this;
     hidePreviousSelection(self);
   });
@@ -49,7 +49,7 @@ $(document).on('click','li.select_species', function(){
 
 function hidePreviousSelection(self){
   if (last_clicked_species) {
-    $(last_clicked_species).slideUp(500,function(){
+    $(last_clicked_species).slideUp(300,function(){
       scrollToTop(self);
     });
   }
