@@ -1,5 +1,7 @@
-markers = [];
-last_clicked_species = null;
+"use strict"
+
+var markers = [];
+var last_clicked_species = null;
 
 $(document).on('keyup','#search', function(){
   var search = $(this).val();
@@ -39,16 +41,25 @@ $(document).on('click','li.select_species', function(){
 
   var common_name = $(this).text().trim().toLowerCase();
   makeWikipediaAPIRequestAndAppendInfo(common_name,this);
-  $(this).find('.wikipedia-info').slideDown(1000);
-
-  if (last_clicked_species) {
-    $(last_clicked_species).find('.wikipedia-info').slideUp(500);
-  }
-  last_clicked_species = $(this);
-
-  var scroll_position = $(this).prev().prev().offset().top;
-  $(document).scrollTop(scroll_position-10);
+  $(this).find('.wikipedia-info').slideDown(500, function(){
+    self = this;
+    hidePreviousSelection(self);
+  });
 })
+
+function hidePreviousSelection(self){
+  if (last_clicked_species) {
+    $(last_clicked_species).slideUp(500,function(){
+      scrollToTop(self);
+    });
+  }
+  last_clicked_species = $(self).parent();
+}
+
+function scrollToTop(self) {
+  var scroll_position = $(self).prev().prev().offset().top;
+  $(document).scrollTop(scroll_position-65);
+}
 
 function addMarkerWithTimeout(position, timeout) {
   window.setTimeout(function() {
@@ -89,14 +100,11 @@ function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
     wikipedia_text = wikipedia_text.replace("== Description ==","")
     var wikipedia_url = "https://en.wikipedia.org/?curid="+page_id;
 
-    // wiki_text = "<div id='wikipedia_text'>"+wikipedia_text+"</div>" +
-    wiki_text = wikipedia_text+
+    var wiki_text = wikipedia_text+
                 "<a href='"+wikipedia_url+"' target='_blank'> (Read more on Wikipedia)</a>";
 
     var wiki_el = $(current_el).find('.wikipedia-info').find('.wikipedia-text');
     $(wiki_el).html(wiki_text);
-    // $(wiki_el).append("<div id='wikipedia_text'>"+wikipedia_text+"</div>");
-    // $('#wikipedia_text').append("<a href='"+wikipedia.url+"'> (Read more on Wikipedia)</a>");
   });
 
   var img_api_url = "https://en.wikipedia.org/w/api.php?action=query&titles="
@@ -108,21 +116,9 @@ function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
   }).success(function(data){
     var img_url = data.query.pages["-1"].imageinfo[0].thumburl;
     var description_url = data.query.pages["-1"].imageinfo[0].descriptionurl;
-    img_html = "<a href='"+description_url+"' target='_blank'><img src='"+img_url+"'>"+"</a>"
+    var img_html = "<a href='"+description_url+"' target='_blank'><img src='"+img_url+"'>"+"</a>"
 
     var wiki_el = $(current_el).find('.wikipedia-info').find('.wikipedia-img');
     $(wiki_el).html(img_html);
-    // $(current_el).text("")
-    // $(current_el).append(img_html);
   });
-
-
-}
-
-function appendWikipediaText(info) {
-
-}
-
-function appendWikipediaImg(html) {
-
 }
