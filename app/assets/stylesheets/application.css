@@ -13,6 +13,6 @@
  *
  *= require_self
  *= require report_collection
- *= require yeti/loader
- *= require yeti/bootswatch
+ * require yeti/loader
+ * require yeti/bootswatch
  */
