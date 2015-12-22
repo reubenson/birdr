@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4">
-      <div id="wikipedia_text"></div>
-      <div id="wikipedia_img"></div>
-      <%= form_tag('', remote: true, id: 'filter-species', class: 'form-group' ) do %>
+      <!-- <div id="wikipedia_text"></div> -->
+      <!-- <div id="wikipedia_img"></div> -->
+      <div id="notice"><%= notice %></div>
+      <%= form_tag('', remote: true, class: 'filter-species' ) do %>
         <%= text_field_tag 'search', '', placeholder: 'filter results (e.g. "owl")', class: 'form-control' %>
       <% end %>
 
@@ -11,7 +12,7 @@
       <% @collection.reports.sort{|x,y| x.com_name <=> y.com_name}.each do |report| %>
       <a xname="#<%= report.com_name %>">
         <li class="select_species list-group-item" data-species="<%= report.sci_name %>">
-          <a><%= report.com_name %></a>
+          <a class="species-name"><%= report.com_name %></a>
           <div class="wikipedia-info">
             <div class="wikipedia-img"></div>
             <div class="wikipedia-text"></div>
@@ -24,7 +25,6 @@
 
     <div class="col-xs-8" id="map-view">
       <div id="view">
-        <div id="notice"><%= notice %></div>
         <div id="map-outer">
           <div id="map"></div>
         </div>

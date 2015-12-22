@@ -23,7 +23,7 @@ class ReportCollectionController < ApplicationController
     # @centroid = @collection.centroid
     notice_msg = "#{@collection.reports.length} different bird species have been
       spotted near #{@collection.location} in the past 30 days. Click through the list
-      of birds on the left or use the search filter to display recent observations on the map below!"
+      of birds below to display recent observations on the map!"
     flash[:notice] = notice_msg
     render 'application/root'
   end

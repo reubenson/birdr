@@ -122,3 +122,23 @@ function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
     $(wiki_el).html(img_html);
   });
 }
+
+$(document).on('scroll', function(){
+  var species_list = $('#notice').height(); + $('#notice').offset().top;
+
+  var position = $('.filter-species').height();
+  var scroll_length = species_list + 10;
+
+  if ($(document).scrollTop()>scroll_length ) {
+    $(".filter-species").addClass('filter-species-fixed');
+    $(".filter-species-fixed").removeClass('filter-species');
+    // $("#filter-species").css("width","52.5%");
+    // console.log($(document).scrollTop());
+  } else {
+    // debugger;
+    // console.log($(document).scrollTop());
+    $(".filter-species-fixed").addClass('filter-species');
+    $(".filter-species").removeClass("filter-species-fixed");
+    // $("#filter-species").css("width","95%");
+  }
+})
