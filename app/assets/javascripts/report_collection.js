@@ -3,6 +3,21 @@
 var markers = [];
 var last_clicked_species = null;
 
+$(function(){
+  $('.col-xs-4').bind('scroll', function() {
+    var species_list = $('#notice').height(); + $('#notice').offset().top;
+    var position = $('.filter-species').height();
+    var scroll_length = species_list + 10;
+    if ($('.col-xs-4').scrollTop()>scroll_length ) {
+      $(".filter-species").addClass('filter-species-fixed');
+      $(".filter-species-fixed").removeClass('filter-species');
+    } else {
+      $(".filter-species-fixed").addClass('filter-species');
+      $(".filter-species").removeClass("filter-species-fixed");
+    }
+  });
+});
+
 $(document).on('keyup','#search', function(){
   var search = $(this).val();
   var species_list = $('li.list-group-item');
@@ -21,9 +36,28 @@ $(document).on('click touchstart','li.select_species', function(){
   $(this).siblings().removeClass('active');
   $(this).addClass('active');
 
+  var species = $(this).data().species;
+
+  displayEBirdSpeciesData(species);
+  displayWikipediaSpeciesData(species,this);
+})
+
+$(document).change('#bird-select', function(){
+  var species = $( "select option:selected" ).val();
+  var self = $("ul").find("[data-species='" + species + "']");
+  $(self).siblings().removeClass('active');
+  $(self).addClass('active');
+
+  // var species = $(this).data().species;
+
+  displayEBirdSpeciesData(species);
+  displayWikipediaSpeciesData(species,self);
+})
+
+function displayEBirdSpeciesData(species) {
   var latitude = $('#species-list').data().lat;
   var longitude = $('#species-list').data().lng;
-  var species = $(this).data().species;
+
   $.ajax({
     url: "http://ebird.org/ws1.1/data/obs/geo_spp/recent?lng="+longitude+
       "&lat="+latitude+"&dist=30&back=30&sci="+species+"&fmt=json"
@@ -38,14 +72,15 @@ $(document).on('click touchstart','li.select_species', function(){
       i+=1;
     })
   })
+}
 
-  var common_name = $(this).text().trim().toLowerCase();
-  makeWikipediaAPIRequestAndAppendInfo(common_name,this);
-  $(this).find('.wikipedia-info').slideDown(1000, function(){
-    self = this;
-    hidePreviousSelection(self);
+function displayWikipediaSpeciesData(species,self) {
+  var common_name = $(self).text().trim().toLowerCase();
+  makeWikipediaAPIRequestAndAppendInfo(common_name,self);
+  $(self).find('.wikipedia-info').slideDown(1000, function(){
+    hidePreviousSelection(this);
   });
-})
+}
 
 function hidePreviousSelection(self){
   if (last_clicked_species) {
@@ -122,18 +157,3 @@ function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
     $(wiki_el).html(img_html);
   });
 }
-
-$(function(){
-  $('.col-xs-4').bind('scroll', function() {
-    var species_list = $('#notice').height(); + $('#notice').offset().top;
-    var position = $('.filter-species').height();
-    var scroll_length = species_list + 10;
-    if ($('.col-xs-4').scrollTop()>scroll_length ) {
-      $(".filter-species").addClass('filter-species-fixed');
-      $(".filter-species-fixed").removeClass('filter-species');
-    } else {
-      $(".filter-species-fixed").addClass('filter-species');
-      $(".filter-species").removeClass("filter-species-fixed");
-    }
-  });
-});

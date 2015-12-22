@@ -2,9 +2,12 @@
   <div class="row">
     <div class="col-xs-4">
       <div id="notice"><%= notice %></div>
+
       <%= form_tag('', remote: true, class: 'filter-species' ) do %>
         <%= text_field_tag 'search', '', placeholder: 'filter results (e.g. "owl")', class: 'form-control' %>
       <% end %>
+
+      <%= select_tag "bird-select", options_from_collection_for_select(@collection.reports.sort{|x,y| x.com_name <=> y.com_name}, "sci_name", "com_name"), prompt: "List of Birds" %>
 
       <ul class="list-group" id="species-list" data-lat="<%= @collection.latitude %>" data-lng="<%= @collection.longitude %>">
       <% @collection.reports.sort{|x,y| x.com_name <=> y.com_name}.each do |report| %>
