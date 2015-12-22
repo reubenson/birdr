@@ -17,7 +17,7 @@ $(document).on('keyup','#search', function(){
   }
 });
 
-$(document).on('click','li.select_species', function(){
+$(document).on('click touchstart','li.select_species', function(){
   $(this).siblings().removeClass('active');
   $(this).addClass('active');
 
