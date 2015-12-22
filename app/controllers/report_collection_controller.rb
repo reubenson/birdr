@@ -1,10 +1,10 @@
 class ReportCollectionController < ApplicationController
 
   def create
-    # location = request.remote_ip=='::1'? "Prospect Park, NY" : request.remote_ip
     location = params[:location] || (request.remote_ip=='::1'? "Prospect Park, NY" : request.remote_ip)
     location = location.split.each(&:capitalize!).join(' ')
     @collection = ReportCollection.create(location: location)
+    @collection.location = @collection.location.split.collect{|str| str.length!=2 ? str.capitalize : str.upcase}.join(' ')
     bird_connection = Adapters::EbirdConnection.new
     reports = bird_connection.location_query(@collection.latitude,@collection.longitude)
     reports.each do |r|
