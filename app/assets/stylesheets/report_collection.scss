@@ -3,11 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .container {
-  display: flex;
-  height: 100%;
+  // display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  // display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  // display: -ms-flexbox;      /* TWEENER - IE 10 */
+  // display: -webkit-flex;     /* NEW - Chrome */
+  // display: flex;
   width: 100%;
+  background-color: white;
 }
 .row {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;
   display: flex;
   width: 100%;
 }
@@ -66,22 +74,25 @@ li {
   border-style: solid;
   border-width: 2px;
   border-color: #6f6f6f;
+  background-color: white;
   margin: 10px 5px;
   padding: 10px 0px;
 }
 
 li .species-name{
-  padding-left: 10%;
+  padding-left: 2.5%;
   text-align: center;
+  border-style: solid;
+  border-width: 0px;
+  border-bottom-width: 3px;
+  border-color: black;
+  padding-bottom: 2px;
 }
 
 .filter-species {
-  // margin: 5px auto;
-  // padding: 5px auto;
   width: 100%;
-  // left: 10px;
-  // left: 0px;
   background-color: white;
+  z-index: 10;
 }
 
 .filter-species input {
@@ -94,6 +105,8 @@ li .species-name{
   top: 50px;
   width: 30%;
   position: fixed;
+  z-index: 10;
+
 }
 
 .filter-species-fixed input {
@@ -104,16 +117,19 @@ li .species-name{
 
 // ******************* old layout css below ***********************
 
-html, body {
+html, body, button {
+  top: 0px;
   height: 90%; margin: 0; padding: 0;
   font-family: 'Open Sans', sans-serif;
 }
 
 nav.navbar {
+  top: 0px;
   position: fixed;
   width: 100%;
+  height: 40px;
   z-index: 5;
-  background-color: #e9ecd1;
+  background-color: white;
   border-bottom: solid #6f6f6f;
 }
 
@@ -140,19 +156,17 @@ div.row {
 }
 
 .col-xs-8 {
-  height: 500px;
   height: 100%;
   margin-top: 0px;
 }
 
-#view, #map-outer, #map {
+#view, #map-outer, #map, #wikipedia, #map-outer {
   height: 100%;
 }
-
-#wikipedia, #map-outer {
-  width: 75%;
-  width: 100%;
-}
+//
+//  {
+//   width: 100%;
+// }
 
 #view {
   position: fixed;
@@ -161,7 +175,11 @@ div.row {
 }
 
 .wikipedia-img img{
-  width: 100%;
+  position: relative;
+  width: 95%;
+  margin-top: 10px;
+  left: 2.5%;
+  z-index: 1;
 }
 
 .wikipedia-info {
@@ -179,4 +197,28 @@ div.row {
   text-align: justify;
   text-justify: inter-word;
   padding: 10px;
+}
+
+button {
+  border-color: black;
+  border-width: 2px;
+  border-bottom-width: 4px;
+  border-right-width: 4px;
+  height: 30px;
+  width: 60px;
+  font-size: 14px;
+  border-radius:1px;
+  background-color: white;
+  color: black;
+}
+
+
+@media screen and (max-width: 800px) {
+  .col-xs-4 {
+    width: 0%;
+  }
+
+  .col-xs-8 {
+    width: 100%;
+  }
 }
