@@ -9,6 +9,7 @@
   // display: -webkit-flex;     /* NEW - Chrome */
   // display: flex;
   width: 100%;
+  height: 100vh;
   background-color: white;
 }
 .row {
@@ -18,20 +19,33 @@
   display: -ms-flexbox;      /* TWEENER - IE 10 */
   display: -webkit-flex;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  // flex-flow: row wrap;
+  // justify-content: space-around;
   width: 100%;
+  height: 100vh;
+  // height: 100%;
 }
 
 .col-xs-8 {
-  width: 70%;
+  width: 69.5%;
   margin: auto;
-  height: 100%;
+  height: 95%;
+  // height: 500px;
 }
 
 .col-xs-4 {
+  position: relative;
+  margin-top: 0px;
   width:30%;
   margin: auto;
   height: 100%;
-  border-right: solid #6f6f6f;
+  border-right: solid black;
+  background-color: yellow;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .navbar-form {
@@ -57,6 +71,11 @@
   display: inline;
 }
 
+.location-search input {
+  border-width: 0px;
+  border-bottom-width: 2px;
+}
+
 .container-fluid {
   height: 40px;
   // margin: auto 10px;
@@ -74,7 +93,9 @@ ul#species-list{
 li {
   border-style: solid;
   border-width: 2px;
-  border-color: #6f6f6f;
+  border-bottom-width: 4px;
+  border-right-width: 4px;
+  border-color: black;
   background-color: white;
   margin: 10px 5px;
   padding: 10px 0px;
@@ -84,6 +105,7 @@ li .species-name{
   padding-left: 2.5%;
   text-align: center;
   border-style: solid;
+  font-weight: 500;
   border-width: 0px;
   border-bottom-width: 3px;
   border-color: black;
@@ -131,16 +153,17 @@ nav.navbar {
   height: 40px;
   z-index: 5;
   background-color: white;
-  border-bottom: solid #6f6f6f;
+  border-bottom: solid black;
 }
 
 .navbar-brand {
   position: relative;
   font-size: 14pt;
-  margin: 10px;
+  margin: auto;
+  text-align: center;
   padding: 10px;
   top: 10px;
-  text-decoration: none
+  text-decoration: none;
 }
 
 li.active {
@@ -152,9 +175,9 @@ li.active a {
   font-weight: 700
 }
 
-div.row {
-  margin-top: 40px
-}
+// div.row {
+//
+// }
 
 .col-xs-8 {
   height: 100%;
@@ -163,6 +186,8 @@ div.row {
 
 #view, #map-outer, #map, #wikipedia, #map-outer {
   height: 100%;
+  // height: 800px;
+  height: inherit;
 }
 //
 //  {
@@ -170,9 +195,12 @@ div.row {
 // }
 
 #view {
-  position: fixed;
+  // position: fixed;
+  position: relative;
   height: inherit;
   width: inherit;
+  width: 100%;
+  height: 100%;
 }
 
 .wikipedia-img img{
@@ -185,13 +213,17 @@ div.row {
 
 .wikipedia-info {
   display: none;
-  width: 100%;
+  width: 95%;
+  margin: 14px auto -1px auto;
   padding: 0px;
+  border: solid black 2px;
 }
 
 .wikipedia-text {
-  width: 90%;
+  width: 95%;
   margin: auto;
+  padding: 4px;
+  text-align: justify;
 }
 
 #notice {
@@ -215,11 +247,15 @@ button {
 
 
 @media screen and (max-width: 800px) {
+  .row{
+    // flex-direction: column;
+  }
+
   .col-xs-4 {
-    width: 0%;
+    width: 90%;
   }
 
   .col-xs-8 {
-    width: 100%;
+    width: 90%;
   }
 }

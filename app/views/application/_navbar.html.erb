@@ -1,26 +1,13 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- <div class="navbar-header"> -->
-      <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> -->
-        <!-- <span class="sr-only">Toggle navigation</span> -->
-        <!-- <span class="icon-bar"></span> -->
-        <!-- <span class="icon-bar"></span> -->
-        <!-- <span class="icon-bar"></span> -->
-      <!-- </button> -->
-      <a class="navbar-brand" href="#">B R D R</a>
-    <!-- </div> -->
+    <a class="navbar-brand" href="#">B R D R</a>
 
-    <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
-      <%= form_tag '/', remote:false, class: 'navbar-form navbar-right' do %>
-        <div class="location-search">
-          <%= text_field_tag 'location', nil, placeholder: 'Search By Location', class: 'form-control' %>
-          <%= button_tag 'Submit', class: 'btn btn-default' %>
-        </div>
-      <% end %>
+    <%= form_tag '/', remote:false, class: 'navbar-form navbar-right' do %>
+      <div class="location-search">
+        <%= text_field_tag 'location', nil, placeholder: 'Search By Location', class: 'form-control' %>
+        <%= button_tag '&crarr;'.html_safe, class: 'btn btn-default' %>
+      </div>
+    <% end %>
 
-      <!-- <ul class="nav navbar-nav navbar-right"> -->
-        <!-- <li><a href="#">Link</a></li> -->
-      <!-- </ul> -->
-    <!-- </div> -->
   </div>
 </nav>

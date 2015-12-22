@@ -1,8 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4">
-      <!-- <div id="wikipedia_text"></div> -->
-      <!-- <div id="wikipedia_img"></div> -->
       <div id="notice"><%= notice %></div>
       <%= form_tag('', remote: true, class: 'filter-species' ) do %>
         <%= text_field_tag 'search', '', placeholder: 'filter results (e.g. "owl")', class: 'form-control' %>
@@ -23,12 +21,8 @@
       </ul>
     </div>
 
-    <div class="col-xs-8" id="map-view">
-      <div id="view">
-        <div id="map-outer">
-          <div id="map"></div>
-        </div>
-      </div>
+    <div class="col-xs-8">
+      <div id="map"></div>
     </div>
   </div>
 </div>
@@ -38,8 +32,9 @@ function initMap() {
   var myLatlng = new google.maps.LatLng(<%= @collection.latitude %> , <%= @collection.longitude %>);
 
   var mapOptions = {
-       zoom: 10,
-      center: myLatlng
+    zoom: 10,
+    center: myLatlng,
+    scrollwheel: false
   };
 
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
