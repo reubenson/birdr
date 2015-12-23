@@ -37,8 +37,24 @@ function initMap() {
   var mapOptions = {
     zoom: 10,
     center: myLatlng,
-    scrollwheel: false
+    scrollwheel: false,
+    streetViewControl: false,
+    mapTypeControl: false
   };
+
+  var styles = [
+  {
+    stylers: [
+      // { hue: "#FEF8B8" },
+      { saturation: -10}
+    ]
+  },{
+    featureType: "road",
+    stylers: [
+      { visibility: "off" }
+    ]
+  }
+];
 
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
   <% @collection.search_species.each do |report| %>
@@ -51,5 +67,7 @@ function initMap() {
     });
     markers.push(marker);
   <% end %>
+
+  map.setOptions({styles: styles});
 }
 </script>

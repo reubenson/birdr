@@ -27,6 +27,8 @@
   -ms-flexbox-wrap: wrap;
   -webkit-flex-wrap: wrap;
 
+  -webkit-flex-flow: row wrap;
+
   // flex-direction: row;
   // margin-top: 40px;
   // flex-flow: row wrap;
@@ -52,7 +54,7 @@
   // margin-bottom: 0px;
   height: 100%;
   border-right: solid black;
-  background-color: yellow;
+  background-color: #FEF8B8;
   height: 100vh;
   overflow: scroll;
 }
