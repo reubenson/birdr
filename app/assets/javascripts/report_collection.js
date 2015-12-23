@@ -159,9 +159,11 @@ function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
   }).success(function(data){
     var page_id = Object.keys(data.query.pages)[0];
     var thumb_url = data.query.pages[page_id].thumbnail.source;
-    var img_url_a = thumb_url.replace("/thumb","").split(/.jpg/i)[0];
-    var img_url_ext = thumb_url.replace("/thumb","").match(/.jpg/i);
-    var img_url = img_url_a + img_url_ext;
+    var img_url = thumb_url.replace("/thumb","")
+    var splice_index = img_url.length-1;
+    while (img_url[splice_index] != '/') { splice_index--; }
+    img_url = img_url.slice(0,splice_index);
+
     var img_html = "<a href='"+img_url+"' target='_blank'><img src='"+img_url+"'>"+"</a>"
 
     var wiki_el = $(current_el).find('.wikipedia-info').find('.wikipedia-img');
