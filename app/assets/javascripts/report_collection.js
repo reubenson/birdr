@@ -34,11 +34,13 @@ $(document).on('keyup','#search', function(){
 });
 
 $(document).on('touchstart', function(event){
-  touch_start = event.pageY;
+  touch_start = event.originalEvent.touches[0].pageY;
 })
 
 $(document).on('click touchend','li.select_species', function(event){
-  if (event.pageY - touch_start>10) { return }
+  if (Math.abs(event.originalEvent.changedTouches[0].pageY - touch_start)>10) {
+    return;
+  }
   $(this).siblings().removeClass('active');
   $(this).addClass('active');
 
