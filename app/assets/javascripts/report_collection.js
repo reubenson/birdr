@@ -38,7 +38,8 @@ $(document).on('touchstart', function(event){
 })
 
 $(document).on('click touchend','li.select_species', function(event){
-  if (Math.abs(event.originalEvent.changedTouches[0].pageY - touch_start)>10) {
+  debugger;
+  if (event.type!="click" && Math.abs(event.originalEvent.changedTouches[0].pageY - touch_start)>10) {
     return;
   }
   $(this).siblings().removeClass('active');
@@ -164,4 +165,8 @@ function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
     var wiki_el = $(current_el).find('.wikipedia-info').find('.wikipedia-img');
     $(wiki_el).html(img_html);
   });
+}
+
+function getFlickrImage(species,current_el){
+  var url = 'https://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&api_key=2fd41b49fedfd589dc265350521ab539&tags='+{your_search_term_here}+'&jsoncallback=?'
 }
