@@ -38,7 +38,6 @@ $(document).on('touchstart', function(event){
 })
 
 $(document).on('click touchend','li.select_species', function(event){
-  debugger;
   if (event.type!="click" && Math.abs(event.originalEvent.changedTouches[0].pageY - touch_start)>10) {
     return;
   }
@@ -93,7 +92,7 @@ function displayWikipediaSpeciesData(species,self) {
 
 function hidePreviousSelection(self){
   if (last_clicked_species) {
-    $(last_clicked_species).slideUp(300,function(){
+    $(last_clicked_species).find('.wikipedia-info').slideUp(300,function(){
       scrollToTop(self);
     });
   }
@@ -133,7 +132,7 @@ function deleteMarkers() {
 function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
   // https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query
   var user_agent = "brdr/1.0 (http://brdr.herokuapp.com/; reubenson@gmail.com)"
-  var url = "https://en.wikipedia.org/w/api.php?action=query&titles="+species+"&prop=extracts&exchars=500&explaintext=&format=json";
+  var url = "https://en.wikipedia.org/w/api.php?action=query&titles="+species+"&prop=extracts&exchars=500&explaintext=&format=json&redirects";
   $.ajax({
     url: url,
     dataType: "JSONP",
@@ -152,21 +151,20 @@ function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
   });
 
   var img_api_url = "https://en.wikipedia.org/w/api.php?action=query&titles="
-  +species+"&generator=images&gimlimit=1&prop=imageinfo&iiprop=url&iiurlwidth=600&format=json"
+  +species+"&prop=pageimages&format=json&redirects"
   $.ajax({
     url: img_api_url,
     dataType: "JSONP",
     headers: { 'Api-User-Agent': user_agent }
   }).success(function(data){
-    var img_url = data.query.pages["-1"].imageinfo[0].thumburl;
-    var description_url = data.query.pages["-1"].imageinfo[0].descriptionurl;
-    var img_html = "<a href='"+description_url+"' target='_blank'><img src='"+img_url+"'>"+"</a>"
+    var page_id = Object.keys(data.query.pages)[0];
+    var thumb_url = data.query.pages[page_id].thumbnail.source;
+    var img_url_a = thumb_url.replace("/thumb","").split(/.jpg/i)[0];
+    var img_url_ext = thumb_url.replace("/thumb","").match(/.jpg/i);
+    var img_url = img_url_a + img_url_ext;
+    var img_html = "<a href='"+img_url+"' target='_blank'><img src='"+img_url+"'>"+"</a>"
 
     var wiki_el = $(current_el).find('.wikipedia-info').find('.wikipedia-img');
     $(wiki_el).html(img_html);
   });
-}
-
-function getFlickrImage(species,current_el){
-  var url = 'https://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&api_key=2fd41b49fedfd589dc265350521ab539&tags='+{your_search_term_here}+'&jsoncallback=?'
 }
