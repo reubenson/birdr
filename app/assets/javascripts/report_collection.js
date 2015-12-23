@@ -2,6 +2,7 @@
 
 var markers = [];
 var last_clicked_species = null;
+var touch_start = 0;
 
 $(function(){
   $('.col-xs-4').bind('scroll', function() {
@@ -32,7 +33,12 @@ $(document).on('keyup','#search', function(){
   }
 });
 
-$(document).on('click touchstart','li.select_species', function(){
+$(document).on('touchstart', function(event){
+  touch_start = event.pageY;
+})
+
+$(document).on('click touchend','li.select_species', function(event){
+  if (event.pageY - touch_start>10) { return }
   $(this).siblings().removeClass('active');
   $(this).addClass('active');
 
