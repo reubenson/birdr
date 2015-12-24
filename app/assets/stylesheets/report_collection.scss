@@ -40,7 +40,7 @@
 }
 
 .col-xs-8 {
-  width: 69.5%;
+  width: 74.5%;
   margin: auto;
   height: 95%;
   // height: 500px;
@@ -48,12 +48,13 @@
 
 .col-xs-4 {
   position: relative;
-  margin-top: 0px;
-  width:30%;
+  width:25%;
   margin: 0px auto;
   // margin-bottom: 0px;
   height: 100%;
   border-right: solid black;
+  border-width: 1px;
+  // background-color: #FEF8B8;
   background-color: #FEF8B8;
   height: 100vh;
   overflow: scroll;
@@ -103,22 +104,25 @@ ul#species-list{
 
 li {
   border-style: solid;
-  border-width: 2px;
-  border-bottom-width: 4px;
-  border-right-width: 4px;
+  // border-bottom-width: 1px;
+  // border-top-width: 1px;
+  border-width: 2px 0px;
+  // border-bottom-width: 2px;
+  // border-right-width: 4px;
   border-color: black;
-  background-color: white;
-  margin: 10px 5px;
-  padding: 10px 0px;
+  background-color: #F5F5F5;
+  margin: -2px 0px;
+  padding: 6px 0px;
 }
 
 li .species-name{
   padding-left: 2.5%;
   text-align: center;
   border-style: solid;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 10pt;
   border-width: 0px;
-  border-bottom-width: 3px;
+  border-bottom-width: 2px;
   border-color: black;
   padding-bottom: 2px;
 }
@@ -224,7 +228,7 @@ li.active a {
   width: 95%;
   margin: 14px auto -1px auto;
   padding: 0px;
-  border: solid black 2px;
+  border: solid black 3px;
 }
 
 .wikipedia-text {
@@ -235,6 +239,7 @@ li.active a {
 }
 
 #notice {
+  font-size:10pt;
   margin-top: 40px;
   text-align: justify;
   text-justify: inter-word;
