@@ -407,7 +407,7 @@ button {
 // }
 
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
 
   .row {
     // flex-direction: column;
@@ -425,6 +425,7 @@ button {
     text-align: center;
     display: block;
     margin: 15px auto;
+    height: 20px;
   }
 
   .filter-species {
