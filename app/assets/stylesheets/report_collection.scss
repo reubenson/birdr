@@ -470,12 +470,15 @@ button {
 
   #wikipedia-info figure > a {
     height: auto;
+    max-height: auto;
     margin-top: 8px;
     width: 96.5%;
   }
 
-  #wikipedia-info figure img {
+  #wikipedia-info figure > a > img {
     width: 100%;
+    height: auto;
+    max-height: 100vh;
     // display: none;
   }
 
