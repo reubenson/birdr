@@ -10,7 +10,7 @@ class ReportCollectionController < ApplicationController
     reports.each do |r|
       if valid_species(r.comName)
         @collection.reports.build({
-          obs_dt: r[:obsDt],
+          obs_dt: DateTime.parse(r[:obsDt]),
           lng: r[:lng],
           lat: r[:lat],
           how_many: r[:howMany],

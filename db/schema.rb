@@ -26,18 +26,18 @@ ActiveRecord::Schema.define(version: 20151129221454) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.date    "obs_dt"
-    t.float   "lat"
-    t.float   "lng"
-    t.string  "loc_name"
-    t.boolean "obs_valid"
-    t.string  "com_name"
-    t.boolean "obs_reviewed"
-    t.string  "sci_name"
-    t.boolean "location_private"
-    t.integer "how_many"
-    t.string  "loc_id"
-    t.integer "report_collection_id"
+    t.datetime "obs_dt"
+    t.float    "lat"
+    t.float    "lng"
+    t.string   "loc_name"
+    t.boolean  "obs_valid"
+    t.string   "com_name"
+    t.boolean  "obs_reviewed"
+    t.string   "sci_name"
+    t.boolean  "location_private"
+    t.integer  "how_many"
+    t.string   "loc_id"
+    t.integer  "report_collection_id"
   end
 
 end

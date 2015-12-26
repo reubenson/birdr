@@ -22,10 +22,35 @@
       </a>
       <% end %>
       </ul>
+
     </div>
 
     <div class="col-xs-8">
-      <div id="map"></div>
+      <div id="mobile-buttons">
+        <!-- <div class="mobile-button"> -->
+          <button id="bird-bio-btn" class="mobile-button">B I O</button>
+        <!-- </div> -->
+        <!-- <div class="mobile-button"> -->
+          <button id="bird-map-btn" class="mobile-button active">M A P</button>
+        <!-- </div> -->
+      </div>
+      <div id="view-title">
+        <h3>Bird Name</h3>
+        <button id="view-button">-</button>
+      </div>
+      <div id="wikipedia-info-background"></div>
+      <div id="wikipedia-info">
+
+        <figure>
+          <a>
+            <img></img>
+          </a>
+          <figcaption></figcaption>
+        </figure>
+      </div>
+      <div id="map-container">
+        <div id="map"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -176,9 +201,8 @@ var styles_2 = [
 ]
 
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  <% @collection.search_species.each do |report| %>
+  <% @collection.reports.each do |report| %>
     var myLatlng = new google.maps.LatLng(<%= report.lat %>,<%= report.lng %>);
-
     var marker = new google.maps.Marker({
         position: myLatlng,
         map: map,

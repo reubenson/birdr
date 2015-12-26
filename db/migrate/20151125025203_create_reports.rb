@@ -1,7 +1,7 @@
 class CreateReports < ActiveRecord::Migration
   def change
     create_table :reports do |t|
-      t.date :obs_dt
+      t.datetime :obs_dt
       t.float :lat
       t.float :lng
       t.string :loc_name
