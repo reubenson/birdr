@@ -32,6 +32,7 @@ $(document).on('click touchend','#bird-map-btn',function(){
   $('#bird-bio-btn').removeClass('active');
   $('#wikipedia-info').hide();
   $('#wikipedia-info-background').hide();
+  google.maps.event.trigger(map, 'resize');
   $('#map').show();
 })
 

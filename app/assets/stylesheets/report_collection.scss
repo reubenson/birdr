@@ -426,14 +426,14 @@ button {
   .col-xs-4 {
     width: 100%;
     height: auto;
-    height: 26vh;
-    min-height: 150px;
+    // height: 26vh;
+    // min-height: 150px;
     z-index: 1;
   }
 
   .col-xs-8 {
     width: 100%;
-    height: 74vh;
+    // height: 74vh;
     margin-top: 0px;
     overflow: hidden;
   }
@@ -463,7 +463,7 @@ button {
     // width: 100%;
     height: auto;
     // max-height: 100vh;
-    max-width: 100%;
+    max-width: 97.5%;
   }
 
   #wikipedia-info figcaption {
