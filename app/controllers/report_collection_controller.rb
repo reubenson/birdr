@@ -18,8 +18,6 @@ end
 
 private
 
-
-
 def collection_params
   params.require(:report_collection).permit(:query)
 end

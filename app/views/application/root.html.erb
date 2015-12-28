@@ -11,28 +11,19 @@
 
       <ul class="list-group" id="species-list" data-lat="<%= @collection.latitude %>" data-lng="<%= @collection.longitude %>">
       <% @collection.reports.sort{|x,y| x.com_name <=> y.com_name}.each do |report| %>
-      <a href="#">
-        <li class="select_species list-group-item" data-species="<%= report.sci_name %>">
-          <a class="species-name"><%= report.com_name %></a>
-          <!-- <div class="wikipedia-info"> -->
-            <!-- <div class="wikipedia-img"></div> -->
-            <!-- <div class="wikipedia-text"></div> -->
-          <!-- </div> -->
-        </li>
-      </a>
+        <a href="#">
+          <li class="select_species list-group-item" data-species="<%= report.sci_name %>">
+            <a class="species-name"><%= report.com_name %></a>
+          </li>
+        </a>
       <% end %>
       </ul>
-
     </div>
 
     <div class="col-xs-8">
       <div id="mobile-buttons">
-        <!-- <div class="mobile-button"> -->
           <button id="bird-bio-btn" class="mobile-button">B I O</button>
-        <!-- </div> -->
-        <!-- <div class="mobile-button"> -->
           <button id="bird-map-btn" class="mobile-button active">M A P</button>
-        <!-- </div> -->
       </div>
       <div id="view-title">
         <h3>Bird Name</h3>
@@ -40,7 +31,6 @@
       </div>
       <div id="wikipedia-info-background"></div>
       <div id="wikipedia-info">
-
         <figure>
           <a>
             <img></img>
@@ -79,7 +69,7 @@ function initMap() {
       { visibility: "off" }
     ]
   }
-];
+  ];
 
 var styles_2 = [
     {
@@ -198,7 +188,7 @@ var styles_2 = [
             }
         ]
     }
-]
+  ]
 
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
   <% @collection.reports.each do |report| %>

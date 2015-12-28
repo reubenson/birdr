@@ -454,14 +454,16 @@ button {
     height: auto;
     max-height: auto;
     margin-top: 8px;
-    width: 96.5%;
-    // max-width: 330px;
+    // width: 96.5%;
+    height: 100%;
+    width: auto;
   }
 
   #wikipedia-info figure > a > img {
-    width: 100%;
+    // width: 100%;
     height: auto;
-    max-height: 100vh;
+    // max-height: 100vh;
+    max-width: 100%;
   }
 
   #wikipedia-info figcaption {
@@ -526,7 +528,7 @@ button {
     right: 1px;
     float: right;
   }
-  //
+
   button#bird-bio-btn {
     left: 1px;
     float: left;
