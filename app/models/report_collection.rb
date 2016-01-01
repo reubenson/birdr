@@ -4,6 +4,10 @@ class ReportCollection < ActiveRecord::Base
   # after_validation :geocode
   after_create :geocode
 
+  def reports_sorted_alphabetically
+    self.reports.sort{|x,y| x.com_name <=> y.com_name}
+  end
+
   def centroid
     lats = []
     lngs = []

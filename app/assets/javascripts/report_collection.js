@@ -94,7 +94,6 @@ $(document).change('#bird-select', function(){
   $(self).siblings().removeClass('active');
   $(self).addClass('active');
 
-  // var species = $(this).data().species;
   $('.mobile-button').show();
 
   displayEBirdSpeciesData(species);
@@ -123,28 +122,22 @@ function displayEBirdSpeciesData(species) {
 
 function displayWikipediaSpeciesData(species,self) {
   var common_name = $(self).text().trim().toLowerCase();
-  // $(self).find('.wikipedia-info').slideDown(1000, function(){
-  //   hidePreviousSelection(this);
-  // });
-  // $(self).find('#wikipedia-info').slideDown(1000, function(){
-    // hidePreviousSelection(this);
-    makeWikipediaAPIRequestAndAppendInfo(common_name,self);
-  // });
+  makeWikipediaAPIRequestAndAppendInfo(common_name,self);
 }
 
-function hidePreviousSelection(self){
-  if (last_clicked_species) {
-    $(last_clicked_species).find('.wikipedia-info').slideUp(300,function(){
-      scrollToTop(self);
-    });
-  }
-  last_clicked_species = $(self).parent();
-}
+// function hidePreviousSelection(self){
+//   if (last_clicked_species) {
+//     $(last_clicked_species).find('.wikipedia-info').slideUp(300,function(){
+//       scrollToTop(self);
+//     });
+//   }
+//   last_clicked_species = $(self).parent();
+// }
 
-function scrollToTop(self) {
-  var scroll_position = $(self).prev().prev().offset().top;
-  $(document).scrollTop(scroll_position-65);
-}
+// function scrollToTop(self) {
+//   var scroll_position = $(self).prev().prev().offset().top;
+//   $(document).scrollTop(scroll_position-65);
+// }
 
 function addMarkerWithTimeout(position, timeout) {
   window.setTimeout(function() {
@@ -173,9 +166,7 @@ function deleteMarkers() {
 
 function makeWikipediaAPIRequestAndAppendInfo(species,current_el){
   var user_agent = "brdr/1.0 (http://brdr.herokuapp.com/; reubenson@gmail.com)"
-
   retrieveWikipediaImage(species,current_el,user_agent);
-  // debugger;
   retrieveWikipediaText(species,current_el,user_agent);
 }
 
@@ -183,7 +174,7 @@ function retrieveWikipediaImage(species,current_el,user_agent){
   // https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query
   var img_api_url = "https://en.wikipedia.org/w/api.php?action=query&titles="
   +species+"&prop=pageimages&format=json&redirects"
-
+  // add case to handle redirects to bird page (i.e. for 'redhead')
   $.ajax({
     url: img_api_url,
     dataType: "JSONP",
@@ -198,19 +189,15 @@ function retrieveWikipediaImage(species,current_el,user_agent){
 
     var img_html = "<a href='"+img_url+"' target='_blank'><img src='"+img_url+"'>"+"</a>"
 
-    // var wiki_el = $(current_el).find('.wikipedia-info').find('.wikipedia-img');
-    var wiki_el = $('#wikipedia-info figure > a');
-    $(wiki_el).replaceWith(img_html);
-    // $('#wikipedia-info figure').css('background-image','url('+img_url+')');
+    // var wiki_el = $('#wikipedia-info figure > a');
+    $('#wikipedia-info figure > a').replaceWith(img_html);
     $('#wikipedia-info-background').css('background-image','url('+img_url+')');
-    // $(wiki_el).html(img_html);
-    // debugger;
-    // retrieveWikipediaText(species,current_el,user_agent);
   });
 }
 
 function retrieveWikipediaText(species,current_el,user_agent){
   var url = "https://en.wikipedia.org/w/api.php?action=query&titles="+species+"&prop=extracts&exchars=500&explaintext=&format=json&redirects";
+  // add case to handle redirects to bird page (i.e. for 'redhead')
   $.ajax({
     url: url,
     dataType: "JSONP",
@@ -219,14 +206,13 @@ function retrieveWikipediaText(species,current_el,user_agent){
     var page_id = Object.keys(data.query.pages)[0];
     var wikipedia_text = data.query.pages[page_id].extract;
     wikipedia_text = wikipedia_text.replace("== Description ==","")
+    // "== Description ==".match(/== \w+ ==/)
     var wikipedia_url = "https://en.wikipedia.org/?curid="+page_id;
 
     var wiki_text = wikipedia_text+
-                "<a href='"+wikipedia_url+"' target='_blank'> (Read more on Wikipedia)</a>";
+      "<a href='"+wikipedia_url+"' target='_blank'> (Read more on Wikipedia)</a>";
 
-    // var wiki_el = $(current_el).find('.wikipedia-info').find('.wikipedia-text');
-    // wiki_el = $('#wikipedia-text');
-    var wiki_el = $('#wikipedia-info figcaption');
-    $(wiki_el).html(wiki_text);
+    // var wiki_el = $('#wikipedia-info figcaption');
+    $('#wikipedia-info figcaption').html(wiki_text);
   });
 }
