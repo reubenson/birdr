@@ -16,3 +16,4 @@
 //= require yeti/loader
 //= require yeti/bootswatch
 //= require report_collection
+//= require gmap_styles

@@ -154,6 +154,7 @@ li {
 }
 
 li .species-name{
+  display: inline;
   padding-left: 2.5%;
   text-align: center;
   border-style: solid;
@@ -163,6 +164,10 @@ li .species-name{
   border-bottom-width: 2px;
   border-color: black;
   padding-bottom: 2px;
+}
+
+li .species-name p {
+  text-decoration: none;
 }
 
 .filter-species {
@@ -201,24 +206,11 @@ nav.navbar {
   display: block;
 }
 
-.navbar-brand {
-  position: relative;
-  font-size: 20pt;
-  font-weight: 300;
-  top: 2px;
-  letter-spacing: -2.5pt;
-  margin: auto;
-  text-align: center;
-  padding: 10px;
-  text-decoration: none;
-  color: black;
-}
-
 li.active {
   background-color: #f9e79e;
 }
 
-li.active a {
+li.active p {
   color: black;
   font-weight: 700;
 }

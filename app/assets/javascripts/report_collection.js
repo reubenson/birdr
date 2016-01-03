@@ -36,11 +36,17 @@ $(document).on('click touchend','#bird-map-btn',function(){
   $('#map').show();
 })
 
-$(document).on('click touchend','#view-button',function(){
+$(document).on('click','#view-button',function(event){
+  // debugger;
+  // if (event.type!="click" && Math.abs(event.originalEvent.changedTouches[0].pageY - touch_start)>10) {
+    // return;
+  // }
+
   if ($('#view-button').text() == '-') {
     $('#wikipedia-info').slideUp(200);
     $('#wikipedia-info-background').addClass('reduce-background');
     $('#view-button').text("+");
+
   } else {
     $('#wikipedia-info').slideDown(500);
     $('#wikipedia-info-background').slideDown(500);
@@ -72,11 +78,11 @@ $(document).on('click touchend','li.select_species', function(event){
     return;
   }
 
+  $('#view-title').slideDown(200);
   if ($('#view-button').text() == '-') {
     $('#wikipedia-info').show();
     $('#wikipedia-info-background').show();
   }
-  $('#view-title').slideDown(200);
 
   $(this).siblings().removeClass('active');
   $(this).addClass('active');
