@@ -19,7 +19,7 @@ $(function(){
   });
 });
 
-$(document).on('click touchend','#bird-bio-btn',function(){
+$(document).on('click','#bird-bio-btn',function(){
   $(this).addClass('active');
   $('#bird-map-btn').removeClass('active');
   $('#wikipedia-info').show();
@@ -27,7 +27,7 @@ $(document).on('click touchend','#bird-bio-btn',function(){
   $('#map').hide();
 })
 
-$(document).on('click touchend','#bird-map-btn',function(){
+$(document).on('click','#bird-map-btn',function(){
   $(this).addClass('active');
   $('#bird-bio-btn').removeClass('active');
   $('#wikipedia-info').hide();
@@ -42,16 +42,16 @@ $(document).on('click','#view-button',function(event){
     // return;
   // }
 
-  if ($('#view-button').text() == '-') {
+  if ($('#view-button').text() == '(Hide Bio)') {
     $('#wikipedia-info').slideUp(200);
     $('#wikipedia-info-background').addClass('reduce-background');
-    $('#view-button').text("+");
+    $('#view-button').text("(Show Bio)");
 
   } else {
     $('#wikipedia-info').slideDown(500);
     $('#wikipedia-info-background').slideDown(500);
     $('#wikipedia-info-background').removeClass('reduce-background');
-    $('#view-button').text("-");
+    $('#view-button').text("(Hide Bio)");
   }
 })
 
@@ -79,7 +79,7 @@ $(document).on('click touchend','li.select_species', function(event){
   }
 
   $('#view-title').slideDown(200);
-  if ($('#view-button').text() == '-') {
+  if ($('#view-button').text() == '(Hide Bio)') {
     $('#wikipedia-info').show();
     $('#wikipedia-info-background').show();
   }
@@ -187,17 +187,25 @@ function retrieveWikipediaImage(species,current_el,user_agent){
     headers: { 'Api-User-Agent': user_agent }
   }).success(function(data){
     var page_id = Object.keys(data.query.pages)[0];
-    var thumb_url = data.query.pages[page_id].thumbnail.source;
-    var img_url = thumb_url.replace("/thumb","")
-    var splice_index = img_url.length-1;
-    while (img_url[splice_index] != '/') { splice_index--; }
-    img_url = img_url.slice(0,splice_index);
+    try {
+      var thumb_url = data.query.pages[page_id].thumbnail.source;
+      var img_url = thumb_url.replace("/thumb","")
+      var splice_index = img_url.length-1;
+      while (img_url[splice_index] != '/') { splice_index--; }
+      img_url = img_url.slice(0,splice_index);
+      var img_html = "<a href='"+img_url+"' target='_blank'><img src='"+img_url+"'>"+"</a>"
+    } catch(err) {
+      var img_html = false
+    }
 
-    var img_html = "<a href='"+img_url+"' target='_blank'><img src='"+img_url+"'>"+"</a>"
-
-    // var wiki_el = $('#wikipedia-info figure > a');
-    $('#wikipedia-info figure > a').replaceWith(img_html);
-    $('#wikipedia-info-background').css('background-image','url('+img_url+')');
+    if (img_html) {
+      $('#wikipedia-info figure > a').replaceWith(img_html);
+      $('#wikipedia-info-background').css('background-image','url('+img_url+')');
+    } else {
+      debugger;
+      $('#wikipedia-info figure > a').replaceWith('<a></a>');
+      $('#wikipedia-info-background').css('background-color','black');
+    }
   });
 }
 

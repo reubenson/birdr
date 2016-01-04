@@ -1,12 +1,12 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">B i r d r</a>
+    <a class="navbar-brand" href="#">B R D R</a>
 
-    <%= form_tag '/', remote:false, class: 'navbar-form navbar-right' do %>
-      <div class="location-search">
+    <%= form_tag '/', remote:false, class: 'navbar-form location-search' do %>
+      <!-- <div class="location-search"> -->
         <%= text_field_tag 'location', nil, placeholder: 'Search By Location', class: 'form-control' %>
         <%= button_tag '&crarr;'.html_safe, class: 'btn btn-default' %>
-      </div>
+      <!-- </div> -->
     <% end %>
 
   </div>

@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$navbar-height: 35px;
+
 html, body, button, select {
   top: 0px;
   height: 90%; margin: 0; padding: 0;
@@ -12,21 +14,20 @@ nav.navbar {
   top: 0px;
   position: fixed;
   width: 100%;
-  height: 40px;
+  height: $navbar-height;
   z-index: 10;
   background-color: #F5F5F5;
-  border-bottom: solid black;
+  border-bottom: solid black 2px;
   display: block;
 }
 
 .navbar-brand {
   position: relative;
-  font-size: 20pt;
-  font-weight: 300;
-  top: 2px;
-  letter-spacing: -2.5pt;
+  font-size: 18pt;
+  font-weight: 700;
+  // top: -1px;
+  // letter-spacing: -2.5pt;
   margin: auto;
-  text-align: center;
   padding: 10px;
   text-decoration: none;
   color: black;
@@ -62,15 +63,17 @@ nav.navbar {
 .col-xs-8 {
   width: 74vw;
   flex-grow: 5;
-  -webkit-box-grow: 5;
   -webkit-box-flex-grow: 5;
-  -moz-box-grow: 5;
+  -webkit-box-flex-grow: 5;
+  -moz-box-flex-grow: 5;
   -ms-flexbox-grow: 5;
   -webkit-flex-grow: 5;
   margin: auto;
+  margin-right: 1px;
   height: 100vh;
-  margin-top: 40px;
+  margin-top: $navbar-height;
   padding: 0px;
+  border-left: 2px black solid;
 }
 
 .col-xs-4 {
@@ -85,9 +88,9 @@ nav.navbar {
   height: 100vh;
 
   margin: 0px auto;
-  border-left: solid black;
-  border-right: solid black;
-  border-width: 1px;
+  // border-left: solid black;
+  // border-right: solid black;
+  // border-width: 1px;
   background-color: #FEF8B8;
   overflow: scroll;
 }
@@ -116,22 +119,36 @@ nav.navbar {
 
 .location-search {
   position: relative;
-  top: 5px;
+  top: 3px;
   display: inline;
+  float: right;
+  height: 24px;
+  width: 170px;
+  background-color: white;
+  border: 2px black solid;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
 }
 
 .location-search button {
-  width: 45px;
-  height: 25px;
+  border: none;
+  background-color: transparent;
+  // width: 45px;
+  // height: 25px;
 }
 
 .location-search input {
-  border-width: 0px;
-  border-bottom-width: 2px;
+  border: none;
+  outline: none;
+  border-right: 3px black solid;
+  height: 22px;
+  // border-width: 0px;
+  // border-bottom-width: 2px;
+  // background-color: black;
 }
 
 .container-fluid {
-  height: 40px;
+  height: $navbar-height;
   top: 15px;
   padding: auto 10px;
 }
@@ -195,17 +212,6 @@ li .species-name p {
   margin-left: 1.25%;
 }
 
-nav.navbar {
-  top: 0px;
-  position: fixed;
-  width: 100%;
-  height: 40px;
-  z-index: 10;
-  background-color: #F5F5F5;
-  border-bottom: solid black;
-  display: block;
-}
-
 li.active {
   background-color: #f9e79e;
 }
@@ -221,7 +227,7 @@ li.active p {
 
 #map-container {
   height:100%;
-  margin-top: -40px;
+  margin-top: -$navbar-height;
   z-index: 4
 }
 
@@ -238,7 +244,7 @@ li.active p {
 }
 
 #wikipedia-info-background {
-  height: 370px;
+  height: 350px;
   width: 75%;
   position: absolute;
   z-index: 1;
@@ -261,16 +267,16 @@ li.active p {
 }
 
 .reduce-background {
-  height: 50px !important;
+  height: 40px !important;
 }
 
 #view-title {
   display: none;
   position: absolute;
-  height: 30px;
+  height: 25px;
   margin-top: 5px;
   margin-left: 5px;
-  width: 75%;
+  width: 74%;
   z-index: 2;
   color: white;
   border-bottom: 2px solid white;
@@ -279,15 +285,23 @@ li.active p {
 #view-title h3 {
   margin: 4px auto 4px 4px;
   font-weight: 300;
+  font-size: 16px;
+  letter-spacing: 4px;
   display: inline;
 }
 
 #view-button {
-  margin-right: 15px;
-  float:right;
+  border: none;
+  // background-color: transparent;
+  color: white;
+  // margin-right: 15px;
+  // float:right;
   font-size: 12pt;
-  height: 26px;
-  width: 26px;
+  font-weight: 300;
+  text-decoration: none;
+  letter-spacing: 4px;
+  // height: 26px;
+  // width: 26px;
 }
 
 #wikipedia-info figure {
@@ -295,7 +309,7 @@ li.active p {
   margin: auto;
   height: 90%;
   width: auto;
-  top: 10px;
+  top: 8px;
   position: relative;
   width: 98.5%;
   padding: 0px;
@@ -309,9 +323,9 @@ li.active p {
 #wikipedia-info figure img {
   float: left;
   position: relative;
-  max-height: 90%;
+  max-height: 283px;
   width: auto;
-  top: 5%;
+  top: 6px;
   padding: auto;
   z-index: 1;
   border-width: 2px;
@@ -326,8 +340,8 @@ li.active p {
   width: auto;
   padding: 0px;
   margin: auto 0;
-  top: 0%;
-  left: 1.25%;
+  top: 0px;
+  left: 5px;
 }
 
 #wikipedia-info figcaption {
@@ -335,9 +349,10 @@ li.active p {
   font-weight: 300;
   position: relative;
   text-align: justify;
-  top: 4%;
-  left: 2.5%;
-  padding-right: 3.5%;
+  width: 96%;
+  top: 6px;
+  left: 1.5%;
+  padding-right: 3.0%;
   color: white;
 }
 
@@ -347,7 +362,7 @@ li.active p {
 
 #notice {
   font-size:10pt;
-  margin-top: 40px;
+  margin-top: $navbar-height;
   text-align: justify;
   text-justify: inter-word;
   padding: 10px;
