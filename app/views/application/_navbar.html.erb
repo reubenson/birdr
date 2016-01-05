@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">B R D R</a>
+    <%= link_to('B R D R', '/', data: { no_turbolink: true }, class: 'navbar-brand') %>
 
     <%= form_tag '/', remote:false, class: 'navbar-form location-search' do %>
       <!-- <div class="location-search"> -->

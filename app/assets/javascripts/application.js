@@ -13,7 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require yeti/loader
-//= require yeti/bootswatch
 //= require report_collection
 //= require gmap_styles

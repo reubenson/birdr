@@ -138,6 +138,7 @@ nav.navbar {
   border: 2px black solid;
   border-bottom-width: 3px;
   border-right-width: 3px;
+  border-radius: 5px;
 }
 
 .location-search button {
@@ -421,6 +422,10 @@ button {
   //   margin-top: 25px;
   // }
 
+  .container {
+    border: none;
+  }
+
   #bird-select {
     width: 90%;
     font-size: 12pt;
@@ -510,7 +515,7 @@ button {
 
   #map-container {
     // width: 100%;
-    width: 99vw;
+    width: 100vw;
     height: auto;
     // height: 74vh;
     position: absolute;
@@ -518,10 +523,9 @@ button {
   }
 
   #map {
-    border: 2px solid black;
-    border-left: none;
-    border-right: none;
+    border-top: 2px solid black;
     height: 100%;
+    box-sizing: border-box;
   }
 
   #mobile-buttons {

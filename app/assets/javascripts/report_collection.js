@@ -230,3 +230,12 @@ function retrieveWikipediaText(species,current_el,user_agent){
     $('#wikipedia-info figcaption').html(wiki_text);
   });
 }
+
+function setMapSize() {
+  var total_height = $(window).height();
+  var unavailable_height = $('.col-xs-4').height();
+  var map_height = total_height-unavailable_height;
+  if (unavailable_height < total_height) {
+    $('#map').height(map_height);
+  }
+}
