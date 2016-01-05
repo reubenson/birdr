@@ -8,6 +8,13 @@ html, body, button, select {
   top: 0px;
   height: 90%; margin: 0; padding: 0;
   font-family: 'Open Sans', sans-serif;
+  font-size: 100%;
+}
+
+input[type="text"]
+{
+  font-family: 'Open Sans', sans-serif;
+  font-style: bold;
 }
 
 nav.navbar {
@@ -23,12 +30,12 @@ nav.navbar {
 
 .navbar-brand {
   position: relative;
-  font-size: 18pt;
+  font-size: 1.5em;
   font-weight: 700;
   // top: -1px;
   // letter-spacing: -2.5pt;
   margin: auto;
-  padding: 10px;
+  padding: 0.5em;
   text-decoration: none;
   color: black;
 }
@@ -38,6 +45,8 @@ nav.navbar {
   height: 100vh;
   background-color: white;
   overflow: hidden;
+  border: 2px solid black;
+  box-sizing: border-box;
 }
 .row {
   display: flex;
@@ -56,8 +65,8 @@ nav.navbar {
 
   // -webkit-flex-flow: row wrap;
 
-  width: 100vw;
-  height: 100vh;
+  // width: 100vw;
+  // height: 100vh;
 }
 
 .col-xs-8 {
@@ -69,11 +78,12 @@ nav.navbar {
   -ms-flexbox-grow: 5;
   -webkit-flex-grow: 5;
   margin: auto;
-  margin-right: 1px;
+  // margin-right: 1px;
   height: 100vh;
   margin-top: $navbar-height;
   padding: 0px;
   border-left: 2px black solid;
+  box-sizing: border-box;
 }
 
 .col-xs-4 {
@@ -123,7 +133,7 @@ nav.navbar {
   display: inline;
   float: right;
   height: 24px;
-  width: 170px;
+  width: 180px;
   background-color: white;
   border: 2px black solid;
   border-bottom-width: 3px;
@@ -234,9 +244,11 @@ li.active p {
 #wikipedia-info {
   position: absolute;
   height: 330px;
-  width: 75%;
-  margin: 0px;
+  width: 74%;
+  // margin: 0px;
+  // margin: 30px 0px 0px 0px;
   margin-top: 30px;
+  margin-left: 0.25%;
   padding: 0px;
   z-index: 1;
   background-color: transparent;
@@ -244,7 +256,7 @@ li.active p {
 }
 
 #wikipedia-info-background {
-  height: 350px;
+  height: 340px;
   width: 75%;
   position: absolute;
   z-index: 1;
@@ -274,9 +286,9 @@ li.active p {
   display: none;
   position: absolute;
   height: 25px;
-  margin-top: 5px;
-  margin-left: 5px;
+  // margin-top: 5px;
   width: 74%;
+  margin-left: 0.25%;
   z-index: 2;
   color: white;
   border-bottom: 2px solid white;
@@ -309,13 +321,13 @@ li.active p {
   margin: auto;
   height: 90%;
   width: auto;
-  top: 8px;
+  top: 3px;
   position: relative;
   width: 98.5%;
   padding: 0px;
   border: solid white 2px;
-  background-size: 100% auto;
-  background-position: 50% 50%;
+  // background-size: 100% auto;
+  // background-position: 50% 50%;
   overflow-y: scroll;
   background-color: transparent;
 }
@@ -345,14 +357,14 @@ li.active p {
 }
 
 #wikipedia-info figcaption {
-  font-size: 12pt;
+  font-size: 1em;
   font-weight: 300;
   position: relative;
   text-align: justify;
-  width: 96%;
+  width: 95%;
   top: 6px;
-  left: 1.5%;
-  padding-right: 3.0%;
+  left: 2.5%;
+  // padding-right: 3.0%;
   color: white;
 }
 
@@ -404,7 +416,7 @@ button {
   // .navbar-form {
   //   top: -7px;
   // }
-  // 
+  //
   // #notice {
   //   margin-top: 25px;
   // }
@@ -443,6 +455,7 @@ button {
     // height: 74vh;
     margin-top: 0px;
     overflow: hidden;
+    border-left: none;
   }
 
   #wikipedia-info {
@@ -452,15 +465,18 @@ button {
 
   #wikipedia-info figure {
     height: auto;
+    margin-top: 8px;
+
     padding-bottom: 10px;
     border: none;
     overflow: scroll;
   }
 
   #wikipedia-info figure > a {
+    left: 0px;
     height: auto;
     max-height: auto;
-    margin-top: 8px;
+    // margin-top: 8px;
     // width: 96.5%;
     height: 100%;
     width: auto;
@@ -469,6 +485,7 @@ button {
   #wikipedia-info figure > a > img {
     // width: 100%;
     height: auto;
+    max-height: 100vw;
     // max-height: 100vh;
     max-width: 97.5%;
   }
@@ -492,15 +509,18 @@ button {
   }
 
   #map-container {
-    width: 100%;
-    height: 100%;
-    height: 74vh;
+    // width: 100%;
+    width: 99vw;
+    height: auto;
+    // height: 74vh;
     position: absolute;
     margin-top: 0px;
   }
 
   #map {
     border: 2px solid black;
+    border-left: none;
+    border-right: none;
     height: 100%;
   }
 
