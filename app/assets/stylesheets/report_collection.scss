@@ -34,7 +34,7 @@ nav.navbar {
   font-size: 1.5em;
   font-weight: 700;
   // top: -1px;
-  letter-spacing: 0.5em;
+  // letter-spacing: 0.5em;
   margin: 0px 10px;
   // padding: 0.5em;
   text-decoration: none;
@@ -44,7 +44,7 @@ nav.navbar {
 #info-link {
   position: absolute;
   right: 10px;
-  letter-spacing: 0.5em;
+  // letter-spacing: 0.5em;
   font-size: 1.5em;
   font-weight: 700;
   text-decoration: none;
@@ -73,7 +73,7 @@ nav.navbar {
   text-align: center;
   font-size: 1.5em;
   font-weight: 600;
-  letter-spacing: 0.5em;
+  // letter-spacing: 0.5em;
   margin: auto;
   width: 50%;
   border-bottom: solid white 2px;
@@ -199,7 +199,7 @@ nav.navbar {
   outline: none;
   // border-right: 3px black solid;
   // height: 22px;
-  margin-left: 0.2em;
+  // margin-left: 0.2em;
   width: 12em;
   height: auto;
   font-size: 1.3em;
@@ -475,24 +475,6 @@ button {
 
 @media screen and (max-width: 600px) , screen and (max-device-width: 700px){
 
-  // nav.navbar {
-  //   height: 30px;
-  // }
-  //
-  // .navbar-brand {
-  //   top: 1px;
-  //   font-size: 15pt;
-  //   letter-spacing: -0.5pt;
-  // }
-
-  // .navbar-form {
-  //   top: -7px;
-  // }
-  //
-  // #notice {
-  //   margin-top: 25px;
-  // }
-
   .container {
     border: none;
   }
@@ -570,7 +552,6 @@ button {
   }
 
   #wikipedia-info figure > a > img {
-    // width: 100%;
     height: auto;
     max-height: 100vw;
     // max-height: 100vh;
@@ -596,7 +577,6 @@ button {
   }
 
   #map-container {
-    // width: 100%;
     width: 100vw;
     height: auto;
     // height: 74vh;
@@ -652,7 +632,7 @@ button {
   }
 }
 
-@media screen and (max-width: 550px) , screen and (max-device-width: 700px){
+@media screen and (max-width: 550px){
 
   .location-search-widen{
     width: 85% !important;
