@@ -62,7 +62,7 @@ nav.navbar {
   height: auto;
   width: 60%;
   padding: 2em;
-  z-index: 50;
+  z-index: 9;
   color: white;
   box-sizing: border-box;
   border: solid white 2px;
@@ -655,7 +655,7 @@ button {
 @media screen and (max-width: 550px) , screen and (max-device-width: 700px){
 
   .location-search-widen{
-    width: 90% !important;
+    width: 85% !important;
   }
 
   .location-search {
