@@ -55,7 +55,7 @@ nav.navbar {
 #info {
   display: none;
   position: absolute;
-  margin: 15% 20%;
+  margin: 15% 20% 0% 20%;
   // top: 45px;
   font-weight: 300;
   font-size: 1.08em;
@@ -67,7 +67,6 @@ nav.navbar {
   color: white;
   box-sizing: border-box;
   border: solid white 2px;
-  background-color: black;
 }
 
 #info-title {
@@ -293,6 +292,8 @@ li.active p {
 }
 
 .make-background {
+  height: 100%;
+
   -webkit-filter: blur(20px);
   -moz-filter: blur(20px);
   -o-filter: blur(20px);
