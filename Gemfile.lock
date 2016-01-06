@@ -54,6 +54,8 @@ GEM
     execjs (2.6.0)
     figaro (1.1.1)
       thor (~> 0.14)
+    font-awesome-rails (4.5.0.0)
+      railties (>= 3.2, < 5.0)
     geocoder (1.2.12)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -179,6 +181,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.1.0)
   figaro
+  font-awesome-rails
   geocoder
   httparty
   jbuilder (~> 2.0)
@@ -199,4 +202,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

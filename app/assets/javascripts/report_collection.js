@@ -106,6 +106,37 @@ $(document).change('#bird-select', function(){
   displayWikipediaSpeciesData(species,self);
 })
 
+$(document).on('click','#info-link', function() {
+  if ($('#info').css("display")=="none") {
+    $('#info').show();
+    $('.container').addClass('make-background');
+  } else {
+    $('#info').hide();
+    $('.container').removeClass('make-background');
+  }
+})
+
+$(document).on('click','.navbar button', function() {
+  var input = $(this).parent().find('input:text').val();
+  if (input == "") { event.preventDefault(); }
+
+  if ( $(window).width() < 550 ) {
+    if ($('.location-search input').css('display') == "none" ) {
+      $('.location-search').addClass('location-search-widen');
+      $('.location-search input').addClass('location-search-widen');
+    } else {
+      $('.location-search').removeClass('location-search-widen');
+      $('.location-search input').removeClass('location-search-widen');
+    }
+    $(this).parent().siblings().toggle();
+    $('.location-search input').toggle();
+  }
+})
+
+$(window).resize(function() {
+  setMapSize();
+})
+
 function displayEBirdSpeciesData(species) {
   var latitude = $('#species-list').data().lat;
   var longitude = $('#species-list').data().lng;

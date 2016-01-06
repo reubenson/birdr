@@ -14,7 +14,8 @@ html, body, button, select {
 input[type="text"]
 {
   font-family: 'Open Sans', sans-serif;
-  font-style: bold;
+  font-weight: 400;
+  font-size: 100%;
 }
 
 nav.navbar {
@@ -29,15 +30,53 @@ nav.navbar {
 }
 
 .navbar-brand {
-  position: relative;
+  position: absolute;
   font-size: 1.5em;
   font-weight: 700;
   // top: -1px;
-  // letter-spacing: -2.5pt;
-  margin: auto;
-  padding: 0.5em;
+  letter-spacing: 0.5em;
+  margin: 0px 10px;
+  // padding: 0.5em;
   text-decoration: none;
   color: black;
+}
+
+#info-link {
+  position: absolute;
+  right: 10px;
+  letter-spacing: 0.5em;
+  font-size: 1.5em;
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+}
+
+#info {
+  display: none;
+  position: absolute;
+  margin: 15% 20%;
+  // top: 45px;
+  font-weight: 300;
+  font-size: 1.08em;
+  text-align: justify;
+  height: auto;
+  width: 60%;
+  padding: 2em;
+  z-index: 50;
+  color: white;
+  box-sizing: border-box;
+  border: solid white 2px;
+}
+
+#info-title {
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 600;
+  letter-spacing: 0.5em;
+  margin: auto;
+  width: 50%;
+  border-bottom: solid white 2px;
 }
 
 .container {
@@ -108,7 +147,7 @@ nav.navbar {
 .navbar-form {
   display: inline;
   position: absolute;
-  right: 10px;
+  // right: 10px;
   top: -2px;
 }
 
@@ -121,29 +160,36 @@ nav.navbar {
   font-size: 10pt;
   height: 25px;
   text-align: center;
-  border-radius: 2px;
+  // border-radius: 2px;
   border-style: solid;
   border-right-width: 4px;
   border-bottom-width: 4px;
 }
 
+  input:focus::-webkit-input-placeholder { color:transparent; }
+  input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
+  input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
+  input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
+
 .location-search {
   position: relative;
-  top: 3px;
-  display: inline;
-  float: right;
-  height: 24px;
-  width: 180px;
-  background-color: white;
-  border: 2px black solid;
-  border-bottom-width: 3px;
-  border-right-width: 3px;
-  border-radius: 5px;
+  // top: 3px;
+  display: block;
+  margin: 0.1em auto;
+  // float: right;
+  height: 1.7em;
+  width: 18em;
+  background-color: transparent;
+  border-bottom: 3px black solid;
+  // border-bottom-width: 3px;
+  // border-right-width: 3px;
+  // border-radius: 5px;
 }
 
 .location-search button {
   border: none;
   background-color: transparent;
+  font-size: 1.3em;
   // width: 45px;
   // height: 25px;
 }
@@ -151,8 +197,13 @@ nav.navbar {
 .location-search input {
   border: none;
   outline: none;
-  border-right: 3px black solid;
-  height: 22px;
+  // border-right: 3px black solid;
+  // height: 22px;
+  margin-left: 0.2em;
+  width: 12em;
+  height: auto;
+  font-size: 1.3em;
+  font-weight: 800;
   // border-width: 0px;
   // border-bottom-width: 2px;
   // background-color: black;
@@ -245,7 +296,7 @@ li.active p {
 #wikipedia-info {
   position: absolute;
   height: 330px;
-  width: 74%;
+  width: 74.7%;
   // margin: 0px;
   // margin: 30px 0px 0px 0px;
   margin-top: 30px;
@@ -258,10 +309,28 @@ li.active p {
 
 #wikipedia-info-background {
   height: 340px;
-  width: 75%;
+  width: 74.7%;
   position: absolute;
   z-index: 1;
 
+  // -webkit-filter: blur(20px);
+  // -moz-filter: blur(20px);
+  // -o-filter: blur(20px);
+  // -ms-filter: blur(20px);
+  // filter: blur(20px);
+  //
+  // -webkit-filter: brightness(20%);
+  // -moz-filter: brightness(20%);
+  // -o-filter: brightness(20%);
+  // -ms-filter: brightness(20%);
+  // filter: brightness(20%);
+  //
+  // opacity: 0.7;
+  background-size: 100% auto;
+  background-position: 50% 50%;
+}
+
+.make-background {
   -webkit-filter: blur(20px);
   -moz-filter: blur(20px);
   -o-filter: blur(20px);
@@ -275,12 +344,10 @@ li.active p {
   filter: brightness(20%);
 
   opacity: 0.7;
-  background-size: 100% auto;
-  background-position: 50% 50%;
 }
 
 .reduce-background {
-  height: 40px !important;
+  height: 35px !important;
 }
 
 #view-title {
@@ -402,6 +469,10 @@ button {
   display: none;
 }
 
+#mobile-search-bar {
+  display: none;
+}
+
 @media screen and (max-width: 600px) , screen and (max-device-width: 700px){
 
   // nav.navbar {
@@ -424,6 +495,17 @@ button {
 
   .container {
     border: none;
+  }
+
+  #info {
+    width: 90%;
+    margin-left: 5%;
+    padding: 1em;
+    font-size: 0.95em;
+  }
+
+  #info-title {
+    width: 75%;
   }
 
   #bird-select {
@@ -566,6 +648,23 @@ button {
   }
 
   #view-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 550px) , screen and (max-device-width: 700px){
+
+  .location-search-widen{
+    width: 90% !important;
+  }
+
+  .location-search {
+    width: 1em;
+    margin: 0.3em auto;
+    border: none;
+  }
+
+  .location-search input {
     display: none;
   }
 }

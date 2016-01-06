@@ -1,13 +1,16 @@
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <%= link_to('B R D R', '/', data: { no_turbolink: true }, class: 'navbar-brand') %>
+  <!-- <div class="container-fluid"> -->
+    <%= link_to('BRDR', '/', data: { no_turbolink: true }, class: 'navbar-brand') %>
+    <a href="#" id="info-link">INFO</a>
 
     <%= form_tag '/', remote:false, class: 'navbar-form location-search' do %>
       <!-- <div class="location-search"> -->
-        <%= text_field_tag 'location', nil, placeholder: 'Search By Location', class: 'form-control' %>
-        <%= button_tag '&crarr;'.html_safe, class: 'btn btn-default' %>
+        <%= text_field_tag 'location', nil, placeholder: 'SEARCH BY LOCATION', class: 'form-control' %>
+        <%= button_tag '', class: 'fa fa-search' %>
+        <!-- btn btn-default -->
       <!-- </div> -->
     <% end %>
 
-  </div>
+
+  <!-- </div> -->
 </nav>
