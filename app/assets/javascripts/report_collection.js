@@ -123,10 +123,10 @@ $(document).on('click','.navbar button', function() {
   if ( $(window).width() < 550 ) {
     if ($('.location-search input').css('display') == "none" ) {
       $('.location-search').addClass('location-search-widen');
-      $('.location-search input').addClass('location-search-widen');
+      // $('.location-search input').addClass('location-search-widen');
     } else {
       $('.location-search').removeClass('location-search-widen');
-      $('.location-search input').removeClass('location-search-widen');
+      // $('.location-search input').removeClass('location-search-widen');
     }
     $(this).parent().siblings().toggle();
     $('.location-search input').toggle();
