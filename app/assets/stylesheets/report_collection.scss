@@ -6,7 +6,8 @@ $navbar-height: 35px;
 
 html, body, button, select {
   top: 0px;
-  height: 90%; margin: 0; padding: 0;
+  // height: 90%;
+  margin: 0; padding: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 100%;
 }
@@ -73,7 +74,6 @@ nav.navbar {
   text-align: center;
   font-size: 1.5em;
   font-weight: 600;
-  // letter-spacing: 0.5em;
   margin: auto;
   width: 50%;
   border-bottom: solid white 2px;
@@ -117,7 +117,6 @@ nav.navbar {
   -ms-flexbox-grow: 5;
   -webkit-flex-grow: 5;
   margin: auto;
-  // margin-right: 1px;
   height: 100vh;
   margin-top: $navbar-height;
   padding: 0px;
@@ -137,18 +136,8 @@ nav.navbar {
   height: 100vh;
 
   margin: 0px auto;
-  // border-left: solid black;
-  // border-right: solid black;
-  // border-width: 1px;
   background-color: #FEF8B8;
   overflow: scroll;
-}
-
-.navbar-form {
-  display: inline;
-  position: absolute;
-  // right: 10px;
-  top: -2px;
 }
 
 .navbar-form input {
@@ -173,40 +162,28 @@ nav.navbar {
 
 .location-search {
   position: relative;
-  // top: 3px;
   display: block;
-  margin: 0.1em auto;
-  // float: right;
-  height: 1.7em;
-  width: 18em;
+  margin: auto;
+  height: 1.8em;
+  width: 20em;
+  text-align:center;
   background-color: transparent;
   border-bottom: 3px black solid;
-  // border-bottom-width: 3px;
-  // border-right-width: 3px;
-  // border-radius: 5px;
 }
 
 .location-search button {
   border: none;
   background-color: transparent;
   font-size: 1.3em;
-  // width: 45px;
-  // height: 25px;
 }
 
 .location-search input {
   border: none;
   outline: none;
-  // border-right: 3px black solid;
-  // height: 22px;
-  // margin-left: 0.2em;
-  width: 12em;
+  // width: 12em;
   height: auto;
   font-size: 1.3em;
   font-weight: 800;
-  // border-width: 0px;
-  // border-bottom-width: 2px;
-  // background-color: black;
 }
 
 .container-fluid {
@@ -313,19 +290,6 @@ li.active p {
   position: absolute;
   z-index: 1;
 
-  // -webkit-filter: blur(20px);
-  // -moz-filter: blur(20px);
-  // -o-filter: blur(20px);
-  // -ms-filter: blur(20px);
-  // filter: blur(20px);
-  //
-  // -webkit-filter: brightness(20%);
-  // -moz-filter: brightness(20%);
-  // -o-filter: brightness(20%);
-  // -ms-filter: brightness(20%);
-  // filter: brightness(20%);
-  //
-  // opacity: 0.7;
   background-size: 100% auto;
   background-position: 50% 50%;
 }
@@ -354,7 +318,6 @@ li.active p {
   display: none;
   position: absolute;
   height: 25px;
-  // margin-top: 5px;
   width: 74%;
   margin-left: 0.25%;
   z-index: 2;
@@ -375,13 +338,10 @@ li.active p {
   // background-color: transparent;
   color: white;
   // margin-right: 15px;
-  // float:right;
   font-size: 12pt;
   font-weight: 300;
   text-decoration: none;
   letter-spacing: 4px;
-  // height: 26px;
-  // width: 26px;
 }
 
 #wikipedia-info figure {
@@ -394,8 +354,6 @@ li.active p {
   width: 98.5%;
   padding: 0px;
   border: solid white 2px;
-  // background-size: 100% auto;
-  // background-position: 50% 50%;
   overflow-y: scroll;
   background-color: transparent;
 }
@@ -432,7 +390,6 @@ li.active p {
   width: 95%;
   top: 6px;
   left: 2.5%;
-  // padding-right: 3.0%;
   color: white;
 }
 
@@ -453,8 +410,6 @@ button {
   border-width: 2px;
   border-bottom-width: 4px;
   border-right-width: 4px;
-  // height: 30px;
-  // width: 60px;
   font-size: 14px;
   // border-radius:1px;
   background-color: white;
