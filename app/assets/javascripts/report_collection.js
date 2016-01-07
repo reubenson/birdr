@@ -37,22 +37,24 @@ $(document).on('click','#bird-map-btn',function(){
 })
 
 $(document).on('click','#view-button',function(event){
+
+  toggleBio();
   // debugger;
   // if (event.type!="click" && Math.abs(event.originalEvent.changedTouches[0].pageY - touch_start)>10) {
     // return;
   // }
 
-  if ($('#view-button').text() == '(Hide Bio)') {
-    $('#wikipedia-info').slideUp(200);
-    $('#wikipedia-info-background').addClass('reduce-background');
-    $('#view-button').text("(Show Bio)");
-
-  } else {
-    $('#wikipedia-info').slideDown(500);
-    $('#wikipedia-info-background').slideDown(500);
-    $('#wikipedia-info-background').removeClass('reduce-background');
-    $('#view-button').text("(Hide Bio)");
-  }
+  // if ($('#view-button').text() == '(Hide Bio)') {
+  //   $('#wikipedia-info').slideUp(200);
+  //   $('#wikipedia-info-background').addClass('reduce-background');
+  //   $('#view-button').text("(Show Bio)");
+  //
+  // } else {
+  //   $('#wikipedia-info').slideDown(500);
+  //   $('#wikipedia-info-background').slideDown(500);
+  //   $('#wikipedia-info-background').removeClass('reduce-background');
+  //   $('#view-button').text("(Hide Bio)");
+  // }
 })
 
 $(document).on('keyup','#search', function(){
@@ -73,8 +75,12 @@ $(document).on('touchstart', function(event){
   touch_start = event.originalEvent.touches[0].pageY;
 })
 
-$(document).on('click touchend','li.select_species', function(event){
-  if (event.type!="click" && Math.abs(event.originalEvent.changedTouches[0].pageY - touch_start)>10) {
+$(document).on('click ','li.select_species', function(event){
+  // if (event.type!="click" && Math.abs(event.originalEvent.changedTouches[0].pageY - touch_start)>10) {
+  //   return;
+  // }
+  if (last_clicked_species && this === last_clicked_species[0]) {
+    toggleBio();
     return;
   }
 
@@ -92,6 +98,8 @@ $(document).on('click touchend','li.select_species', function(event){
   $('#view-title h3').text( $(this).text().trim() );
   displayEBirdSpeciesData(species);
   displayWikipediaSpeciesData(species,this);
+
+  last_clicked_species = $(this);
 })
 
 $(document).change('#bird-select', function(){
@@ -134,6 +142,20 @@ $(document).on('click','.navbar button', function() {
 $(window).resize(function() {
   setMapSize();
 })
+
+function toggleBio() {
+  if ($('#view-button').text() == '(Hide Bio)') {
+    $('#wikipedia-info').slideUp(200);
+    $('#wikipedia-info-background').addClass('reduce-background');
+    $('#view-button').text("(Show Bio)");
+
+  } else {
+    $('#wikipedia-info').slideDown(500);
+    $('#wikipedia-info-background').slideDown(500);
+    $('#wikipedia-info-background').removeClass('reduce-background');
+    $('#view-button').text("(Hide Bio)");
+  }
+}
 
 function displayEBirdSpeciesData(species) {
   var latitude = $('#species-list').data().lat;
