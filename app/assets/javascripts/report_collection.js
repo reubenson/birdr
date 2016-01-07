@@ -123,10 +123,8 @@ $(document).on('click','.navbar button', function() {
   if ( $(window).width() < 550 ) {
     if ($('.location-search input').css('display') == "none" ) {
       $('.location-search').addClass('location-search-widen');
-      // $('.location-search input').addClass('location-search-widen');
     } else {
       $('.location-search').removeClass('location-search-widen');
-      // $('.location-search input').removeClass('location-search-widen');
     }
     $(this).parent().siblings().toggle();
     $('.location-search input').toggle();
@@ -233,7 +231,6 @@ function retrieveWikipediaImage(species,current_el,user_agent){
       $('#wikipedia-info figure > a').replaceWith(img_html);
       $('#wikipedia-info-background').css('background-image','url('+img_url+')');
     } else {
-      debugger;
       $('#wikipedia-info figure > a').replaceWith('<a></a>');
       $('#wikipedia-info-background').css('background-color','black');
     }
@@ -250,14 +247,12 @@ function retrieveWikipediaText(species,current_el,user_agent){
   }).success(function(data){
     var page_id = Object.keys(data.query.pages)[0];
     var wikipedia_text = data.query.pages[page_id].extract;
-    wikipedia_text = wikipedia_text.replace("== Description ==","")
-    // "== Description ==".match(/== \w+ ==/)
+    wikipedia_text = wikipedia_text.replace(/== \w+ ==/,"")
     var wikipedia_url = "https://en.wikipedia.org/?curid="+page_id;
 
     var wiki_text = wikipedia_text+
       "<a href='"+wikipedia_url+"' target='_blank'> (Read more on Wikipedia)</a>";
 
-    // var wiki_el = $('#wikipedia-info figcaption');
     $('#wikipedia-info figcaption').html(wiki_text);
   });
 }
