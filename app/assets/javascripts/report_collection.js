@@ -218,10 +218,8 @@ function retrieveWikipediaImage(species,current_el,user_agent){
     var page_id = Object.keys(data.query.pages)[0];
     try {
       var thumb_url = data.query.pages[page_id].thumbnail.source;
-      var img_url = thumb_url.replace("/thumb","")
-      var splice_index = img_url.length-1;
-      while (img_url[splice_index] != '/') { splice_index--; }
-      img_url = img_url.slice(0,splice_index);
+      var img_width = $('.col-xs-8').width();
+      var img_url = thumb_url.replace(/[0-9]+px/,img_width+'px');
       var img_html = "<a href='"+img_url+"' target='_blank'><img src='"+img_url+"'>"+"</a>"
     } catch(err) {
       var img_html = false
