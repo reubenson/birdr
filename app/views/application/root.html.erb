@@ -75,18 +75,26 @@
 
 <script type="text/javascript">
 function initMap() {
-  var myLatlng = new google.maps.LatLng(<%= @collection.latitude %> , <%= @collection.longitude %>);
+  var user_loc = new google.maps.LatLng(<%= @collection.latitude %> , <%= @collection.longitude %>);
 
   var mapOptions = {
-    zoom: 10,
-    center: myLatlng,
+    zoom: 9,
+    center: user_loc,
     scrollwheel: false,
     streetViewControl: false,
     mapTypeControl: false
   };
 
-
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+  var user_marker = new google.maps.Marker({
+    icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+    position: user_loc,
+    map: map,
+    title: "Your Location"
+  });
+  // markers.push(user_marker);
+
   <% @collection.reports.each do |report| %>
     var myLatlng = new google.maps.LatLng(<%= report.lat %>,<%= report.lng %>);
     var marker = new google.maps.Marker({
@@ -96,6 +104,8 @@ function initMap() {
     });
     markers.push(marker);
   <% end %>
+
+
 
   map.setOptions({styles: styles});
 

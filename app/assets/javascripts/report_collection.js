@@ -149,7 +149,7 @@ function displayEBirdSpeciesData(species) {
     var drop_length = Math.min(100,animation_length/data.length);
     data.forEach(function(report){
       var myLatlng = new google.maps.LatLng(report.lat,report.lng);
-      addMarkerWithTimeout(myLatlng, i * drop_length+(Math.random()*20-10));
+      addMarkerWithTimeout(myLatlng, report.obsDt, i * drop_length+(Math.random()*20-10));
       i+=1;
     })
   })
@@ -174,11 +174,12 @@ function displayWikipediaSpeciesData(species,self) {
 //   $(document).scrollTop(scroll_position-65);
 // }
 
-function addMarkerWithTimeout(position, timeout) {
+function addMarkerWithTimeout(position, date, timeout) {
   window.setTimeout(function() {
     markers.push(new google.maps.Marker({
       position: position,
       map: map,
+      title: "Observation Date: " + date,
       animation: google.maps.Animation.DROP
     }));
   }, timeout);
@@ -219,6 +220,7 @@ function retrieveWikipediaImage(species,current_el,user_agent){
     try {
       var thumb_url = data.query.pages[page_id].thumbnail.source;
       var img_width = $('.col-xs-8').width();
+      img_width = 500;
       var img_url = thumb_url.replace(/[0-9]+px/,img_width+'px');
       var img_html = "<a href='"+img_url+"' target='_blank'><img src='"+img_url+"'>"+"</a>"
     } catch(err) {
