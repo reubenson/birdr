@@ -37,24 +37,7 @@ $(document).on('click','#bird-map-btn',function(){
 })
 
 $(document).on('click','#view-button',function(event){
-
   toggleBio();
-  // debugger;
-  // if (event.type!="click" && Math.abs(event.originalEvent.changedTouches[0].pageY - touch_start)>10) {
-    // return;
-  // }
-
-  // if ($('#view-button').text() == '(Hide Bio)') {
-  //   $('#wikipedia-info').slideUp(200);
-  //   $('#wikipedia-info-background').addClass('reduce-background');
-  //   $('#view-button').text("(Show Bio)");
-  //
-  // } else {
-  //   $('#wikipedia-info').slideDown(500);
-  //   $('#wikipedia-info-background').slideDown(500);
-  //   $('#wikipedia-info-background').removeClass('reduce-background');
-  //   $('#view-button').text("(Hide Bio)");
-  // }
 })
 
 $(document).on('keyup','#search', function(){
