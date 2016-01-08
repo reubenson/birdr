@@ -79,6 +79,11 @@ nav.navbar {
   border-bottom: solid white 2px;
 }
 
+#info a {
+  color: white;
+  font-weight: 400;
+}
+
 .container {
   width: 100%;
   height: 100vh;
@@ -187,6 +192,7 @@ nav.navbar {
   height: 1.2em;
   font-size: 1.3em;
   font-weight: 800;
+  text-transform: uppercase;
 }
 
 ul#species-list{

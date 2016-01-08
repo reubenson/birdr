@@ -143,6 +143,12 @@ $(window).resize(function() {
   setMapSize();
 })
 
+$(function() {
+  if ( $('#notice').text().indexOf("No birds") != -1 ) {
+    $('.filter-species').hide();
+  }
+})
+
 function toggleBio() {
   if ($('#view-button').text() == '(Hide Bio)') {
     $('#wikipedia-info').slideUp(200);

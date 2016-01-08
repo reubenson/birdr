@@ -1,0 +1,4 @@
+<%= form_tag '/', remote:false, class: 'navbar-form location-search' do %>
+    <%= text_field_tag 'location', nil, value: term, class: 'form-control' %>
+    <%= button_tag '', class: 'fa fa-search' %>
+<% end %>

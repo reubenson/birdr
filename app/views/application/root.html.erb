@@ -25,7 +25,15 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4">
-      <div id="notice"><%= notice %></div>
+      <div id="notice">
+        <%= @collection_view_object.notice %>
+        <% if @collection_view_object.show_popular_searches %>
+          <br><br>
+          <% @collection_view_object.popular_searches.each do |term| %>
+            <%= render partial: "report_collection/popular_search", locals:{term: term}, layout: false %>
+          <% end %>
+        <% end %>
+      </div>
 
       <%= form_tag('', remote: true, class: 'filter-species' ) do %>
         <%= text_field_tag 'search', '', placeholder: 'Filter Results (e.g. "Owl")', class: 'form-control' %>

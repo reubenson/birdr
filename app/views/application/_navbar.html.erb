@@ -1,16 +1,9 @@
 <nav class="navbar navbar-default">
-  <!-- <div class="container-fluid"> -->
     <%= link_to('B I R D R', '/', data: { no_turbolink: true }, class: 'navbar-brand') %>
     <a href="#" id="info-link">A B O U T</a>
 
     <%= form_tag '/', remote:false, class: 'navbar-form location-search' do %>
-      <!-- <div class="location-search"> -->
         <%= text_field_tag 'location', nil, placeholder: 'SEARCH BY LOCATION', class: 'form-control' %>
         <%= button_tag '', class: 'fa fa-search' %>
-        <!-- btn btn-default -->
-      <!-- </div> -->
     <% end %>
-
-
-  <!-- </div> -->
 </nav>
