@@ -6,7 +6,7 @@ gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'pg'
-ruby "2.2.3"
+ruby "2.2.1"
 gem 'rails_12factor'
 # gem 'puma'
 # Use SCSS for stylesheets
