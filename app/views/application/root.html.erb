@@ -43,7 +43,7 @@
 
       <ul class="list-group" id="species-list" data-lat="<%= @collection.latitude %>" data-lng="<%= @collection.longitude %>">
       <% @collection.reports.sort{|x,y| x.com_name <=> y.com_name}.each do |report| %>
-        <a href="#<%= report.com_name %>">
+        <a href="#">
           <li class="select-species list-group-item" data-species="<%= report.sci_name %>">
             <span><%= report.com_name %></span>
           </li>

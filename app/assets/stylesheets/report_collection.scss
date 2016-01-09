@@ -215,7 +215,7 @@ li {
   border-color: black;
   background-color: #F5F5F5;
   margin: -2px 0px;
-  padding: 6px 0px;
+  padding: 6px 0px 6px 12px;
 }
 
 li:hover{
@@ -224,10 +224,10 @@ li:hover{
 
 .select-species span {
   display: inline;
-  padding-left: 12px;
+  // margin-left: 12px;
   font-weight: 400;
   border-width: 0px;
-  border-bottom: solid black 2px;
+  // border-bottom: solid black 2px;
 }
 
 .filter-species {
