@@ -257,7 +257,7 @@ function retrieveWikipediaText(species,current_el,user_agent){
   }).success(function(data){
     var page_id = Object.keys(data.query.pages)[0];
     var wikipedia_text = data.query.pages[page_id].extract;
-    wikipedia_text = wikipedia_text.replace(/==[ \w+.+ ]+==/,"");
+    wikipedia_text = wikipedia_text.replace(/==[ \w+.+ ]+==/g,"");
     var wikipedia_url = "https://en.wikipedia.org/?curid="+page_id;
 
     var wiki_text = wikipedia_text+
