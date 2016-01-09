@@ -58,7 +58,7 @@ $(document).on('touchstart', function(event){
   touch_start = event.originalEvent.touches[0].pageY;
 })
 
-$(document).on('click ','li.select_species', function(event){
+$(document).on('click ','li.select-species', function(event){
   // if (event.type!="click" && Math.abs(event.originalEvent.changedTouches[0].pageY - touch_start)>10) {
   //   return;
   // }
@@ -67,13 +67,12 @@ $(document).on('click ','li.select_species', function(event){
     return;
   }
 
-  $('#view-title').slideDown(200);
+  $('#view-title').slideDown(0);
   if ($('#view-button').text() == '(Hide Bio)') {
     $('#wikipedia-info').show();
     $('#wikipedia-info-background').show();
   }
-
-  $(this).siblings().removeClass('active');
+  if (last_clicked_species) { last_clicked_species.removeClass('active'); }
   $(this).addClass('active');
 
   var species = $(this).data().species;
@@ -134,13 +133,13 @@ $(function() {
 
 function toggleBio() {
   if ($('#view-button').text() == '(Hide Bio)') {
-    $('#wikipedia-info').slideUp(200);
+    $('#wikipedia-info').slideUp(0);
     $('#wikipedia-info-background').addClass('reduce-background');
     $('#view-button').text("(Show Bio)");
 
   } else {
-    $('#wikipedia-info').slideDown(500);
-    $('#wikipedia-info-background').slideDown(500);
+    $('#wikipedia-info').slideDown(0);
+    $('#wikipedia-info-background').slideDown(0);
     $('#wikipedia-info-background').removeClass('reduce-background');
     $('#view-button').text("(Hide Bio)");
   }
@@ -258,7 +257,7 @@ function retrieveWikipediaText(species,current_el,user_agent){
   }).success(function(data){
     var page_id = Object.keys(data.query.pages)[0];
     var wikipedia_text = data.query.pages[page_id].extract;
-    wikipedia_text = wikipedia_text.replace(/== \w+ ==/,"")
+    wikipedia_text = wikipedia_text.replace(/==[ \w+.+ ]+==/,"");
     var wikipedia_url = "https://en.wikipedia.org/?curid="+page_id;
 
     var wiki_text = wikipedia_text+
