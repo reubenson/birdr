@@ -34,10 +34,7 @@ nav.navbar {
   position: absolute;
   font-size: 1.5em;
   font-weight: 700;
-  // top: -1px;
-  // letter-spacing: 0.5em;
   margin: 0px 10px;
-  // padding: 0.5em;
   text-decoration: none;
   color: black;
 }
@@ -45,7 +42,6 @@ nav.navbar {
 #info-link {
   position: absolute;
   right: 10px;
-  // letter-spacing: 0.5em;
   font-size: 1.5em;
   font-weight: 700;
   text-decoration: none;
@@ -55,8 +51,7 @@ nav.navbar {
 #info {
   display: none;
   position: absolute;
-  margin: 15% 20% 0% 20%;
-  // top: 45px;
+  margin: 10% 20% 0% 20%;
   font-weight: 300;
   font-size: 1.08em;
   text-align: justify;
@@ -180,16 +175,15 @@ nav.navbar {
 .location-search button {
   border: none;
   background-color: transparent;
-  font-size: 1.5em;
+  font-size: 1.4em;
   margin-top: 0.1em;
 }
 
 .location-search input {
   border: none;
   outline: none;
-  // width: 12em;
   // height: auto;
-  height: 1.2em;
+  height: auto;
   font-size: 1.3em;
   font-weight: 800;
   text-transform: uppercase;
@@ -279,7 +273,6 @@ li.active span {
   position: absolute;
   height: 330px;
   width: 74.7%;
-  // margin: 0px;
   // margin: 30px 0px 0px 0px;
   margin-top: 30px;
   margin-left: 0.25%;
@@ -343,9 +336,7 @@ li.active span {
 
 #view-button {
   border: none;
-  // background-color: transparent;
   color: white;
-  // margin-right: 15px;
   margin-left: 0.5em;
   font-size: 12pt;
   font-weight: 300;
