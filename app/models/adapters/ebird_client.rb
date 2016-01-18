@@ -27,7 +27,7 @@ module Adapters
 	          how_many: r["howMany"],
 	          com_name: r["comName"],
 	          sci_name: r["sciName"]
-	        });
+	        })
 	      end
 	    end
 			reports.compact

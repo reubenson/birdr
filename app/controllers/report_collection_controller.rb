@@ -9,7 +9,6 @@ class ReportCollectionController < ApplicationController
 
     eBirdClient = Adapters::EbirdClient.new
     @collection.reports = eBirdClient.find_by_location(@collection.latitude,@collection.longitude)
-
     @collection_view_object = ReportCollectionViewObject.new(@collection,params[:location])
 
     render 'application/root'

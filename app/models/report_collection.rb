@@ -1,7 +1,7 @@
 class ReportCollection < ActiveRecord::Base
-  has_many :reports
+  # has_many :reports
+  attr_accessor :reports
   geocoded_by :address
-  # after_validation :geocode
   after_create :geocode
 
   def reports_sorted_alphabetically

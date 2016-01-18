@@ -230,7 +230,7 @@ function retrieveWikipediaImage(species,current_el,user_agent){
     try {
       var thumb_url = data.query.pages[page_id].thumbnail.source;
       var img_width = $('.col-xs-8').width();
-      img_width = 500;
+      img_width = 400;
       var img_url = thumb_url.replace(/[0-9]+px/,img_width+'px');
       var img_html = "<a href='"+img_url+"' target='_blank'><img src='"+img_url+"'>"+"</a>"
     } catch(err) {
