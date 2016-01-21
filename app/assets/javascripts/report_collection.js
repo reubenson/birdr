@@ -40,17 +40,29 @@ $(document).on('click','#view-button',function(event){
   toggleBio();
 })
 
+$(document).on('click','#nearest-sighting-button',function(){
+  findNearestBird();
+})
+
 $(document).on('keyup','#search', function(){
   var search = $(this).val();
   var species_list = $('li.list-group-item');
+  var no_birds_found = true;
   for (var i = 0; i < species_list.length; i++) {
     var name = $(species_list[i]).text();
     var str = new RegExp(search,'i');
     if ( str.test(name) ) {
       $(species_list[i]).show();
+      no_birds_found = false;
     } else {
       $(species_list[i]).hide();
     }
+  }
+
+  if (no_birds_found) {
+    $('#bird-not-found').show();
+  } else {
+    $('#bird-not-found').hide();
   }
 });
 
@@ -162,6 +174,33 @@ function displayEBirdSpeciesData(species) {
       addMarkerWithTimeout(myLatlng, report.obsDt, i * drop_length+(Math.random()*20-10));
       i+=1;
     })
+  })
+}
+
+function findNearestBird(species) {
+  var searched_name = $('.filter-species input:text').val()
+
+  $.ajax({
+    url: "/bird/sci_name",
+    data: {searched_name: searched_name}
+  }).success(function(data){
+    eBirdNearestLocation(data);
+  })
+}
+
+function eBirdNearestLocation(species) {
+  var latitude = $('#species-list').data().lat;
+  var longitude = $('#species-list').data().lng;
+  $.ajax({
+    url: "http://ebird.org/ws1.1/data/nearest/geo_spp/recent?"+
+    "lat=" + latitude + "&" +
+    "lng=" + longitude + "&" +
+    "sci=" + species +
+    "&back=30&maxResults=1&fmt=json"
+  }).success(function(data){
+    var found_lat = data[0].lat;
+    var found_lng = data[0].lng;
+    location.href = "/?geocoordinates="+found_lat+','+found_lng
   })
 }
 

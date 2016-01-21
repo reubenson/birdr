@@ -417,15 +417,10 @@ button {
   color: black;
 }
 
-#bird-select {
-  display: none;
-}
-
-#mobile-buttons {
-  display: none;
-}
-
-#mobile-search-bar {
+#bird-select,
+#mobile-buttons,
+#mobile-search-bar,
+#bird-not-found {
   display: none;
 }
 

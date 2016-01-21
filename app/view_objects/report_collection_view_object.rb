@@ -21,7 +21,7 @@ class ReportCollectionViewObject
         msg += " Try one of our popular searches instead."
         @show_popular_searches = true
       else
-        msg += "There may have been an error in obtaining your geo-coordinates. Please
+        msg += " There may have been an error in obtaining your geo-coordinates. Please
         try refreshing this page, or try searching your location using the search
         bar above."
       end
