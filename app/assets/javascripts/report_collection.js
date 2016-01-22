@@ -119,8 +119,8 @@ $(document).change('#bird-select', function(){
 //   event.stopPropagation();
 // })
 
-$(document).on('click',window,function(){
-  if (event.srcElement.id == "info-link" && $('#info').css("display")=="none") {
+$(document).on('click',window,function(event){
+  if (event.target.id == "info-link" && $('#info').css("display")=="none") {
      $('#info').show();
      $('.container').addClass('make-background');
      return
@@ -130,7 +130,7 @@ $(document).on('click',window,function(){
   }
 })
 
-$(document).on('click','.navbar button', function() {
+$(document).on('click','.navbar button', function(event) {
   var input = $(this).parent().find('input:text').val();
   if (input == "") { event.preventDefault(); }
 
