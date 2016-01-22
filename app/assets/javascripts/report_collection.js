@@ -196,7 +196,11 @@ function findNearestBird(species) {
     url: "/bird/sci_name",
     data: {searched_name: searched_name}
   }).success(function(data){
-    eBirdNearestLocation(data);
+    if (data.success) {
+      eBirdNearestLocation(data.text);
+    } else {
+      alert(data.text)
+    }
   })
 }
 
