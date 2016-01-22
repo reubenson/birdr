@@ -108,11 +108,23 @@ $(document).change('#bird-select', function(){
   displayWikipediaSpeciesData(species,self);
 })
 
-$(document).on('click','#info-link', function() {
-  if ($('#info').css("display")=="none") {
-    $('#info').show();
-    $('.container').addClass('make-background');
-  } else {
+// $(document).on('click','#info-link', function(event) {
+//   if ($('#info').css("display")=="none") {
+//     $('#info').show();
+//     $('.container').addClass('make-background');
+//   } else {
+//     $('#info').hide();
+//     $('.container').removeClass('make-background');
+//   }
+//   event.stopPropagation();
+// })
+
+$(document).on('click',window,function(){
+  if (event.srcElement.id == "info-link" && $('#info').css("display")=="none") {
+     $('#info').show();
+     $('.container').addClass('make-background');
+     return
+   } else if ($('#info').css("display")=="block") {
     $('#info').hide();
     $('.container').removeClass('make-background');
   }

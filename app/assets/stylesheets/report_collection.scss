@@ -12,6 +12,9 @@ html, body, button, select {
   font-size: 100%;
 }
 
+a { text-decoration: none }
+a:hover { text-decoration: underline }
+
 input[type="text"]
 {
   font-family: 'Open Sans', sans-serif;
@@ -399,22 +402,27 @@ li.active span {
 }
 
 #notice {
-  font-size:10pt;
   margin-top: $navbar-height;
-  text-align: justify;
-  text-justify: inter-word;
-  padding: 10px;
 }
 
-button {
-  border-color: black;
-  border-width: 2px;
+#notice,
+#bird-not-found {
+  font-size: 0.85em;
+  text-align: justify;
+  text-justify: inter-word;
+  padding: 5px 10px;
+}
+
+#nearest-sighting-button {
+  border: solid black 2px;
   border-bottom-width: 4px;
   border-right-width: 4px;
-  font-size: 14px;
-  // border-radius:1px;
+  font-size: 1em;
+  font-weight: 300;
+  margin: 10px auto;
+  width: 100%;
   background-color: white;
-  color: black;
+  padding: 5px;
 }
 
 #bird-select,
