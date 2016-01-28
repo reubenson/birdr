@@ -44,6 +44,17 @@ $(document).on('click','#nearest-sighting-button',function(){
   findNearestBird();
 })
 
+$(document).on('click','#add-to-watchlist-button',function(){
+  var searched_name = $('.filter-species input:text').val()
+  $.ajax({
+    url: '/add_to_watchlist',
+    method: 'post',
+    data: {bird_name: searched_name}
+  }).success(function(data){
+    $('#bird-not-found').append(data);
+  })
+})
+
 $(document).on('keyup','#search', function(){
   var search = $(this).val();
   var species_list = $('li.list-group-item');

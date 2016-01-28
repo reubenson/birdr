@@ -1,0 +1,17 @@
+<h2>Login Form</h2>
+
+<%= form_for @user, url: {action: "create"} do |f| %>
+  <div class="field">
+    <%= f.label "email address" %>
+    <%= f.text_field :email_address %>
+  </div>
+  <div class="field">
+    <%= f.label "password" %>
+    <%= f.password_field "password" %>
+  </div>
+  <div class="field">
+    <%= f.label "password confirmation" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <%= f.submit "Log In" %>
+<% end %>
