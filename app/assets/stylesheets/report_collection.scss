@@ -282,10 +282,10 @@ li.active span {
 #wikipedia-info {
   position: absolute;
   height: 330px;
-  width: 74.7%;
+  width: 76.5%;
   // margin: 30px 0px 0px 0px;
   margin-top: 30px;
-  margin-left: 0.25%;
+  // margin-left: 0.25%;
   padding: 0px;
   z-index: 3;
   background-color: transparent;
@@ -294,8 +294,8 @@ li.active span {
 
 #wikipedia-info-background {
   display: none;
-  height: 340px;
-  width: 74.7%;
+  height: 345px;
+  width: 75%;
   position: absolute;
   z-index: 3;
   background-color: black;
@@ -329,7 +329,9 @@ li.active span {
   display: none;
   position: absolute;
   height: 25px;
-  width: 74%;
+  width: 74.5%;
+  text-align: center;
+  margin-top: 4px;
   margin-left: 0.25%;
   z-index: 4;
   color: white;
@@ -360,7 +362,7 @@ li.active span {
   margin: auto;
   height: 90%;
   width: auto;
-  top: 3px;
+  top: 10px;
   position: relative;
   width: 98.5%;
   padding: 0px;
