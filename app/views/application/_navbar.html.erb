@@ -7,5 +7,6 @@
         <%= button_tag '', class: 'fa fa-search' %>
     <% end %>
     <!-- <%= link_to('Log In', login_path) %> -->
+    <%= react_component('Login', {currentUser: "Reuben", userLoggedIn: logged_in?}, html_options={tag: nil}) %>
 </nav>
 <div class="navbar-spacer"></div>
