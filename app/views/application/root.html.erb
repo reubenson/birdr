@@ -1,5 +1,5 @@
 <div id="info">
-  <p id="info-title">A B O U T</p>
+  <!-- <p id="info-title">A B O U T</p> -->
   <p>
     Birdr is a tool for discovering and identifying birds in your neighborhood.
     It was built by <a href="http://reubenson.com/">Reuben Son</a> as a student at
@@ -16,7 +16,7 @@
     <a href="http://www.birds.cornell.edu/Page.aspx?pid=1478" target="_blank_">Cornell Lab of Ornithology</a>
     to log birding checklists submitted provided by birders across the globe.
     Information and images specific to each bird species are supplied through AJAX requests
-    to the Wikipedia API. The responsive and reactive design was coded in JavaScript/jQuery and CSS
+    to the Wikipedia API. The responsive design was coded in JavaScript/jQuery and CSS
     from scratch without the use of additional libraries.
   </p>
 
@@ -70,16 +70,22 @@
           <button id="bird-bio-btn" class="mobile-button">B I O</button>
           <button id="bird-map-btn" class="mobile-button active">M A P</button>
       </div>
-      <div id="view-title">
-        <h3>
-          Bird Name
-        </h3>
-        <a href="#" id="view-button">(Hide Bio)</a>
+      <!-- <div id="view-title"> -->
+        <!-- <h3> -->
+          <!-- Bird Name -->
+        <!-- </h3> -->
+        <!-- <a href="#" id="view-button">(Hide Bio)</a> -->
         <!-- <button id="view-button">-</button> -->
         <!-- <a href="#" id="view-button">Hide Bio</a> -->
-      </div>
+      <!-- </div> -->
       <div id="wikipedia-info-background" class="make-background"></div>
       <div id="wikipedia-info">
+        <div id="bird-name">
+          <h3>Bird Name</h3>
+          <a href="#" id="view-button">(Hide Bio)</a>
+          <!-- <button id="view-button">-</button> -->
+          <!-- <a href="#" id="view-button">Hide Bio</a> -->
+        </div>
         <figure>
           <a>
             <img></img>
@@ -96,11 +102,12 @@
 
 <script type="text/javascript">
 function initMap() {
-  var user_loc = new google.maps.LatLng(<%= @collection.latitude %> , <%= @collection.longitude %>);
+  var userLoc = new google.maps.LatLng(<%= @collection.latitude %> , <%= @collection.longitude %>);
+  var userLocOffset = new google.maps.LatLng(<%= @collection.latitude + 0.15 %> , <%= @collection.longitude %>);
 
   var mapOptions = {
     zoom: 9,
-    center: user_loc,
+    center: userLocOffset,
     scrollwheel: false,
     streetViewControl: false,
     mapTypeControl: false
@@ -110,7 +117,7 @@ function initMap() {
 
   var user_marker = new google.maps.Marker({
     icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-    position: user_loc,
+    position: userLoc,
     map: map,
     title: "Your Location"
   });

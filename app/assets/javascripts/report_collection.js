@@ -90,7 +90,7 @@ $(document).on('click ','li.select-species', function(event){
     return;
   }
 
-  $('#view-title').slideDown(0);
+  // $('#view-title').slideDown(0);
   if ($('#view-button').text() == '(Hide Bio)') {
     $('#wikipedia-info').show();
     $('#wikipedia-info-background').show();
@@ -100,7 +100,7 @@ $(document).on('click ','li.select-species', function(event){
 
   var species = $(this).data().species;
 
-  $('#view-title h3').text( $(this).text().trim() );
+  $('#bird-name h3').text( $(this).text().trim() );
   displayEBirdSpeciesData(species);
   displayWikipediaSpeciesData(species,this);
 
@@ -157,14 +157,16 @@ $(function() {
 
 function toggleBio() {
   if ($('#view-button').text() == '(Hide Bio)') {
-    $('#wikipedia-info').slideUp(0);
-    $('#wikipedia-info-background').addClass('reduce-background');
+    $('#wikipedia-info > figure').slideUp(200);
+    $('#wikipedia-info-background').hide();
+    // $('#wikipedia-info-background').addClass('reduce-background');
     $('#view-button').text("(Show Bio)");
 
   } else {
-    $('#wikipedia-info').slideDown(0);
-    $('#wikipedia-info-background').slideDown(0);
-    $('#wikipedia-info-background').removeClass('reduce-background');
+    $('#wikipedia-info > figure').slideDown(200);
+    $('#wikipedia-info-background').show();
+    // $('#wikipedia-info-background').slideDown(0);
+    // $('#wikipedia-info-background').removeClass('reduce-background');
     $('#view-button').text("(Hide Bio)");
   }
 }

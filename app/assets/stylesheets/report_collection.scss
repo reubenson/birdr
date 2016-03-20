@@ -6,7 +6,6 @@ $navbar-height: 35px;
 
 html, body, button, select {
   top: 0px;
-  // height: 90%;
   margin: 0; padding: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 100%;
@@ -68,9 +67,9 @@ nav.navbar {
   width: 60%;
   padding: 2em;
   z-index: 9;
-  color: white;
+  color: black;
   box-sizing: border-box;
-  border: solid white 2px;
+  border: solid black 2px;
 }
 
 #info-title {
@@ -80,11 +79,11 @@ nav.navbar {
   font-weight: 600;
   margin: auto;
   width: 50%;
-  border-bottom: solid white 2px;
+  border-bottom: solid black 2px;
 }
 
 #info a {
-  color: white;
+  color: black;
   font-weight: 400;
 }
 
@@ -93,7 +92,6 @@ nav.navbar {
   height: 100vh;
   background-color: white;
   overflow: hidden;
-  // border: 2px solid black;
   box-sizing: border-box;
 }
 .row {
@@ -114,7 +112,6 @@ nav.navbar {
   // -webkit-flex-flow: row wrap;
 
   width: 100vw;
-  // height: 100vh;
 }
 
 
@@ -128,7 +125,6 @@ nav.navbar {
   -webkit-flex-grow: 5;
   margin: auto;
   height: 100vh;
-  // margin-top: $navbar-height;
   padding: 0px;
   border-left: 2px black solid;
   box-sizing: border-box;
@@ -157,12 +153,7 @@ nav.navbar {
 .form-control {
   font-weight: 300;
   font-size: 10pt;
-  // height: 25px;
   text-align: center;
-  // border-radius: 2px;
-  border-style: solid;
-  border-right-width: 4px;
-  border-bottom-width: 4px;
 }
 
   input:focus::-webkit-input-placeholder { color:transparent; }
@@ -180,23 +171,22 @@ nav.navbar {
   text-align:center;
   background-color: transparent;
   border-bottom: 3px black solid;
-}
 
-.location-search button {
-  border: none;
-  background-color: transparent;
-  font-size: 1.4em;
-  margin-top: 0.1em;
-}
+  button {
+    border: none;
+    background-color: transparent;
+    font-size: 1.4em;
+    margin-top: 0.1em;
+  }
 
-.location-search input {
-  border: none;
-  outline: none;
-  // height: auto;
-  height: auto;
-  font-size: 1.3em;
-  font-weight: 800;
-  text-transform: uppercase;
+  input {
+    border: none;
+    outline: none;
+    height: auto;
+    font-size: 1.3em;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
 }
 
 ul#species-list{
@@ -228,10 +218,8 @@ li:hover{
 
 .select-species span {
   display: inline;
-  // margin-left: 12px;
   font-weight: 400;
   border-width: 0px;
-  // border-bottom: solid black 2px;
 }
 
 .filter-species {
@@ -241,8 +229,10 @@ li:hover{
 
 .filter-species input {
   font-weight: 300;
-  width: 94%;
+  width: 95%;
   margin-left: 1.5%;
+  border: 2px black solid;
+  box-shadow: 2px 2px black;
 }
 
 .filter-species-fixed {
@@ -281,76 +271,65 @@ li.active span {
 
 #wikipedia-info {
   position: absolute;
-  height: 330px;
-  width: 76.5%;
-  // margin: 30px 0px 0px 0px;
-  margin-top: 30px;
-  // margin-left: 0.25%;
-  padding: 0px;
+  height: auto;
+  width: 65%;
+  left: 30%;
+  margin-top: 10px;
+  padding: 5px;
   z-index: 3;
-  background-color: transparent;
+  background-color: white;
+  opacity: 0.85;
   display: none;
+  border: solid black 2px;
+  box-shadow: 4px 4px black;
+
+  #bird-name {
+    position: relative;
+    color: black;
+    border-bottom: solid black 3px;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+
+    h3 {
+      font-size: 1.2em;
+      font-weight: 400;
+      letter-spacing: 4px;
+      display: inline;
+    }
+  }
 }
 
 #wikipedia-info-background {
   display: none;
-  height: 345px;
+  height: 100vh;
   width: 75%;
   position: absolute;
   z-index: 3;
   background-color: black;
-  background-size: 100% auto;
+  background-size: cover;
   background-position: 50% 50%;
 }
 
 .make-background {
-  height: 100%;
+  -webkit-filter: blur(200px);
+  -moz-filter: blur(200px);
+  -o-filter: blur(200px);
+  -ms-filter: blur(200px);
+  filter: blur(200px);
 
-  -webkit-filter: blur(20px);
-  -moz-filter: blur(20px);
-  -o-filter: blur(20px);
-  -ms-filter: blur(20px);
-  filter: blur(20px);
-
-  -webkit-filter: brightness(20%);
-  -moz-filter: brightness(20%);
-  -o-filter: brightness(20%);
-  -ms-filter: brightness(20%);
-  filter: brightness(20%);
-
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .reduce-background {
   height: 35px !important;
 }
 
-#view-title {
-  display: none;
-  position: absolute;
-  height: 25px;
-  width: 74.5%;
-  text-align: center;
-  margin-top: 4px;
-  margin-left: 0.25%;
-  z-index: 4;
-  color: white;
-  border-bottom: 2px solid white;
-}
-
-#view-title h3 {
-  margin: 4px auto 4px 4px;
-  font-weight: 300;
-  font-size: 16px;
-  letter-spacing: 4px;
-  display: inline;
-}
-
 #view-button {
   border: none;
-  color: white;
+  color: black;
   margin-left: 0.5em;
-  font-size: 12pt;
+  font-size: 1.2em;
   font-weight: 300;
   text-decoration: none;
   font-style: italic;
@@ -358,15 +337,12 @@ li.active span {
 }
 
 #wikipedia-info figure {
-  margin-left: 0px;
   margin: auto;
-  height: 90%;
+  height: auto;
   width: auto;
-  top: 10px;
   position: relative;
-  width: 98.5%;
-  padding: 0px;
-  // border: solid white 2px;
+  width: auto;
+  padding: 10px;
   overflow-y: scroll;
   background-color: transparent;
 }
@@ -376,12 +352,9 @@ li.active span {
   position: relative;
   max-height: 283px;
   width: auto;
-  top: 6px;
-  padding: auto;
   z-index: 1;
-  border-width: 2px;
-  border-color: black;
-  border-style: solid;
+  border: solid black 2px;
+  box-shadow: 2px 2px black;
 }
 
 #wikipedia-info figure > a {
@@ -392,26 +365,19 @@ li.active span {
   padding: 0px;
   margin: auto 0;
   top: 0px;
-  left: 5px;
 }
 
 #wikipedia-info figcaption {
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: 300;
   position: relative;
   text-align: justify;
-  width: 95%;
-  top: 6px;
+  width: 96.5%;
   left: 2.5%;
-  color: white;
-}
-
-#wikipedia-info figcaption a{
-  color: white;
-}
-
-#notice {
-  // margin-top: $navbar-height;
+  color: black;
+  a {
+    color: black;
+  }
 }
 
 #notice,
@@ -482,23 +448,23 @@ li.active span {
   .col-xs-4 {
     width: 100%;
     height: auto;
-    // height: 26vh;
-    // min-height: 150px;
     z-index: 1;
   }
 
   .col-xs-8 {
     width: 100%;
-    // height: 74vh;
     margin-top: 0px;
     overflow: hidden;
     border-left: none;
   }
 
   #wikipedia-info {
-    width: 100%;
-    margin-top: 20px;
-    // z-index: 3;
+    position: relative;
+    width: 95%;
+    margin: 40px auto 0 auto;
+    left: 0;
+
+    #bird-name { display: none }
   }
 
   #wikipedia-info figure {
@@ -514,7 +480,6 @@ li.active span {
     left: 0px;
     height: auto;
     max-height: auto;
-    // width: 96.5%;
     height: 100%;
     width: auto;
   }
@@ -522,7 +487,6 @@ li.active span {
   #wikipedia-info figure > a > img {
     height: auto;
     max-height: 100vw;
-    // max-height: 100vh;
     max-width: 98.5%;
   }
 
@@ -547,7 +511,6 @@ li.active span {
   #map-container {
     width: 100vw;
     height: auto;
-    // height: 74vh;
     position: absolute;
     margin-top: 0px;
   }

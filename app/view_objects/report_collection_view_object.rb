@@ -14,7 +14,7 @@ class ReportCollectionViewObject
     if @collection.reports.length > 0
       msg = "#{@collection.reports.length} different bird species have been
       spotted near #{loc} in the past 30 days. Click through the list
-      of birds below to display recent observations on the map!"
+      of birds below to display information and recent observations on the map!"
     else
       msg = "No birds have been spotted near #{loc} in the past 30 days."
       if search_term?
