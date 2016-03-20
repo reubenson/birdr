@@ -5,6 +5,8 @@ development:
   pool: 5
   username: reubenson1
   password:
+  host: #postgres
+  port: 5432
 
 test:
   adapter: postgresql
@@ -13,3 +15,5 @@ test:
   pool: 5
   username: reubenson1
   password:
+  host: #postgres
+  port: 5432
