@@ -121,12 +121,16 @@ $(document).change('#bird-select', function(){
 
 $(document).on('click',window,function(event){
   if (event.target.id == "info-link" && $('#info').css("display")=="none") {
-     $('#info').show();
-     $('.container').addClass('make-background');
-     return
-   } else if ($('#info').css("display")=="block") {
+    $('#info').show();
+    $('.container').addClass('make-background');
+    return
+  } else if ($('#info').css("display")=="block") {
     $('#info').hide();
     $('.container').removeClass('make-background');
+  } else if (event.target.parentElement.className == 'col-xs-8' && $('#bird-name').css("display")=="block"){
+    toggleBio();
+  } else if (event.target.id == 'wikipedia-info' || event.target.id == 'bird-name') {
+    toggleBio();
   }
 })
 
