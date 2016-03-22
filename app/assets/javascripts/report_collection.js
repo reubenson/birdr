@@ -122,6 +122,7 @@ $(document).change('#bird-select', function(){
 $(document).on('click',window,function(event){
   if (event.target.id == "info-link" && $('#info').css("display")=="none") {
     $('#info').show();
+    // document.querySelector('.')
     $('.container').addClass('make-background');
     return
   } else if ($('#info').css("display")=="block") {

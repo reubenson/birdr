@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@mixin blur-background($radius) {
+  -webkit-filter: blur($radius);
+  -moz-filter: blur($radius);
+  -ms-filter: blur($radius);
+  -o-filter: blur($radius);
+  filter: blur($radius);
+}
+
+@mixin filter-transition($t) {
+  transition: $t filter linear;
+  -o-transition: $t -o-filter linear;
+  -ms-transition: $t -ms-filter linear;
+  -moz-transition: $t -moz-filter linear;
+  -webkit-transition: $t -webkit-filter linear;
+  // transition: $t -webkit-filter linear;
+}
+
 $navbar-height: 35px;
 
 html, body, button, select {
@@ -93,6 +110,8 @@ nav.navbar {
   background-color: white;
   overflow: hidden;
   box-sizing: border-box;
+  @include filter-transition(0.4s);
+  @include blur-background(0px);
 }
 .row {
   display: flex;
@@ -227,14 +246,6 @@ li:hover{
   z-index: 10;
 }
 
-.filter-species input {
-  font-weight: 300;
-  width: 95%;
-  margin-left: 1.5%;
-  border: 2px black solid;
-  box-shadow: 2px 2px black;
-}
-
 .filter-species-fixed {
   top: 50px;
   width: 24.5%;
@@ -243,10 +254,21 @@ li:hover{
   z-index: 10;
 }
 
+.filter-species input {
+  font-weight: 300;
+  height: 25px;
+  width: 95%;
+  margin-left: 1.5%;
+  border: 2px black solid;
+  box-shadow: 2px 2px black;
+}
+
 .filter-species-fixed input {
   height: 25px;
-  width: 94%;
-  margin-left: 1.25%;
+  width: 97%;
+  margin-left: 1.5%;
+  border: 2px black solid;
+  box-shadow: 2px 2px black;
 }
 
 li.active {
@@ -309,16 +331,13 @@ li.active span {
   background-color: black;
   background-size: cover;
   background-position: 50% 50%;
+  opacity: 0.2;
+  @include blur-background(140px);
+
 }
 
 .make-background {
-  -webkit-filter: blur(200px);
-  -moz-filter: blur(200px);
-  -o-filter: blur(200px);
-  -ms-filter: blur(200px);
-  filter: blur(200px);
-
-  opacity: 0.5;
+  @include blur-background(30px);
 }
 
 .reduce-background {
