@@ -11,6 +11,7 @@ class ReportCollectionController < ApplicationController
       @collection = ReportCollection.create(location: location)
     end
     @collection.format_location
+    binding.pry
     @collection.query = @collection.location if params[:location]
     @collection.save
 
