@@ -2,7 +2,7 @@ class ReportCollection < ActiveRecord::Base
   # has_many :reports
   attr_accessor :reports
   geocoded_by :address
-  after_create :geocode
+  after_initialize :geocode
 
   def reports_sorted_alphabetically
     self.reports.sort{|x,y| x.com_name <=> y.com_name}

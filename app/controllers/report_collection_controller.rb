@@ -13,7 +13,10 @@ class ReportCollectionController < ApplicationController
         location = ( (request.remote_ip=='::1' || request.remote_ip=='127.0.0.1') ? "Prospect Park, NY" : request.remote_ip)
       end
       # location = params[:location] || ( (request.remote_ip=='::1' || request.remote_ip=='127.0.0.1') ? "Prospect Park, NY" : request.remote_ip)
-      @collection = ReportCollection.create(location: location)
+      @collection = ReportCollection.new(location: location)
+      if @collection.latitude == nil || @collection.longitude == nil
+        @collection = ReportCollection.new(location: "Prospect Park, NY")
+      end
     end
     @collection.format_location
     @collection.query = @collection.location if params[:location]
